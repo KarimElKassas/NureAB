@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nureab/screens/activation_screen.dart';
+import 'package:nureab/screens/credit_card_screen.dart';
+import 'package:nureab/screens/login_screen.dart';
+import 'package:nureab/screens/registration_screen.dart';
+import 'package:nureab/screens/reset_password_screen.dart';
 import 'package:nureab/screens/splash_screen.dart';
 import 'package:nureab/shared/bloc_observer.dart';
 

@@ -27,7 +27,7 @@ class SplashScreenCubit extends Cubit<SplashScreenStates>{
 
       if(secondTime!){
 
-        navigateAndFinish(context, const LoginScreen());
+        navigateAndFinish(context, LoginScreen());
         emit(SplashScreenSuccessEndState());
 
       }else{
