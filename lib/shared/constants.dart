@@ -5,13 +5,17 @@ import 'package:fluttertoast/fluttertoast.dart';
 Color orangeColor = const Color(0xFFF69323);
 Color greyColor = const Color(0xffEBEEF5);
 Color greyThreeColor = const Color(0xff92A8C4);
+Color greyFiveColor = const Color(0xFFEBEEF5);
+Color greySixColor = const Color(0xFFF8F9FC);
 Color darkBlueColor = const Color(0xff0F2644);
+Color secondaryColor = const Color(0xff003D8C);
+Color lightSecondaryColor = const Color(0xff197DFF);
 
 Widget defaultTextButton(
-        {required Function onPressed,
-        required String text,
+        { Function onPressed,
+         String text,
         Color textColor = Colors.black,
-        TextStyle? textStyle}) =>
+        TextStyle textStyle}) =>
     TextButton(
       onPressed: () {
         onPressed();
@@ -33,9 +37,9 @@ Widget defaultOutLinedButton({
   Color textColor = Colors.white,
   double radius = 8.0,
   bool isUpperCase = true,
-  TextStyle? textStyle,
-  required VoidCallback function,
-  required String text,
+  TextStyle textStyle,
+   VoidCallback function,
+   String text,
 }) =>
     OutlinedButton(
       onPressed: () {},
@@ -61,9 +65,9 @@ Widget defaultButton({
   Color textColor = const Color(0xff0F2644),
   double radius = 8.0,
   bool isUpperCase = true,
-  TextStyle? textStyle,
-  required VoidCallback function,
-  required String text,
+  TextStyle textStyle,
+   VoidCallback function,
+   String text,
 }) =>
     Container(
       width: width,
@@ -90,14 +94,14 @@ Widget defaultButton({
       ),
     );
 
-Future<bool?> showToast({
-  required String message,
-  required dynamic length,
-  required dynamic gravity,
-  required int timeInSecForIosWeb,
-  Color? backgroundColor,
-  Color? textColor,
-  double? fontSize,
+Future<bool> showToast({
+   String message,
+   dynamic length,
+   dynamic gravity,
+   int timeInSecForIosWeb,
+  Color backgroundColor,
+  Color textColor,
+  double fontSize,
 }) =>
     Fluttertoast.showToast(
         msg: message,

@@ -101,8 +101,8 @@ class RegistrationScreen extends StatelessWidget {
                         keyboardType: TextInputType.text,
                         textInputAction: TextInputAction.next,
                         // Moves focus to next.
-                        validator: (String? value) {
-                          if (value!.isEmpty) {
+                        validator: (String value) {
+                          if (value.isEmpty) {
                             return 'you must type your name';
                           }
                         },
@@ -177,8 +177,8 @@ class RegistrationScreen extends StatelessWidget {
                         keyboardType: TextInputType.emailAddress,
                         textInputAction: TextInputAction.next,
                         // Moves focus to next.
-                        validator: (String? value) {
-                          if (value!.isEmpty) {
+                        validator: (String value) {
+                          if (value.isEmpty) {
                             return 'you must type email address';
                           }
                           if (!value.contains("@")) {
@@ -259,8 +259,8 @@ class RegistrationScreen extends StatelessWidget {
                         keyboardType: TextInputType.phone,
                         textInputAction: TextInputAction.next,
                         // Moves focus to next.
-                        validator: (String? value) {
-                          if (value!.isEmpty) {
+                        validator: (String value) {
+                          if (value.isEmpty) {
                             return 'you must type your phone';
                           }
                           if (value.length != 11) {
@@ -344,8 +344,8 @@ class RegistrationScreen extends StatelessWidget {
                         keyboardType: TextInputType.text,
                         textInputAction: TextInputAction.next,
                         // Moves focus to next.
-                        validator: (String? value) {
-                          if (value!.isEmpty) {
+                        validator: (String value) {
+                          if (value.isEmpty) {
                             return 'you must type work place name';
                           }
                         },
@@ -420,8 +420,8 @@ class RegistrationScreen extends StatelessWidget {
                         keyboardType: TextInputType.visiblePassword,
                         textInputAction: TextInputAction.next,
                         // Moves focus to next.
-                        validator: (String? value) {
-                          if (value!.isEmpty) {
+                        validator: (String value) {
+                          if (value.isEmpty) {
                             return 'you must type password';
                           }
                         },
@@ -496,8 +496,8 @@ class RegistrationScreen extends StatelessWidget {
                         keyboardType: TextInputType.visiblePassword,
                         textInputAction: TextInputAction.done,
                         // Moves focus to next.
-                        validator: (String? value) {
-                          if (value!.isEmpty) {
+                        validator: (String value) {
+                          if (value.isEmpty) {
                             return 'you must type confirm password';
                           }
                         },
@@ -531,7 +531,7 @@ class RegistrationScreen extends StatelessWidget {
                       ),
                       defaultButton(
                         function: () {
-                          if (formKey.currentState!.validate()) {
+                          if (formKey.currentState.validate()) {
                             var newPass = passwordController.text.toString();
                             var confirmNewPass = confirmPasswordController.text.toString();
                             if(newPass != confirmNewPass){

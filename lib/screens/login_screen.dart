@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nureab/cubit/login/login_cubit.dart';
 import 'package:nureab/cubit/login/login_states.dart';
+import 'package:nureab/screens/bottomNavigation.dart';
 import 'package:nureab/screens/registration_screen.dart';
 import 'package:nureab/screens/reset_password_screen.dart';
 import 'package:nureab/shared/constants.dart';
@@ -93,8 +94,8 @@ class LoginScreen extends StatelessWidget {
                         controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                         textInputAction: TextInputAction.next, // Moves focus to next.
-                        validator: (String? value) {
-                          if (value!.isEmpty) {
+                        validator: (String value) {
+                          if (value.isEmpty) {
                             return 'you must type email address';
                           }
                           if (!value.contains("@")) {
@@ -156,8 +157,8 @@ class LoginScreen extends StatelessWidget {
                         controller: passwordController,
                         keyboardType: TextInputType.visiblePassword,
                         textInputAction: TextInputAction.done, // Moves focus to next.
-                        validator: (String? value) {
-                          if (value!.isEmpty) {
+                        validator: (String value) {
+                          if (value.isEmpty) {
                             return 'you must type password';
                           }
                         },
@@ -215,10 +216,10 @@ class LoginScreen extends StatelessWidget {
                       ),
                       defaultButton(
                           function: () {
-                            if(formKey.currentState!.validate()){
+                           /* if(formKey.currentState!.validate()){
 
-                            }
-
+                            }*/
+navigateTo(context, BottomNavigation(comingIndex: 0,));
                           },
                           text: "Sign In",
                           background: orangeColor,

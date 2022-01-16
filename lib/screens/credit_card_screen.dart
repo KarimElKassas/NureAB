@@ -126,8 +126,8 @@ class CreditCardScreen extends StatelessWidget {
                         keyboardType: TextInputType.number,
                         textInputAction: TextInputAction.next,
                         // Moves focus to next.
-                        validator: (String? value) {
-                          if (value!.isEmpty) {
+                        validator: (String value) {
+                          if (value.isEmpty) {
                             return 'you must type card number';
                           }
                         },
@@ -184,8 +184,8 @@ class CreditCardScreen extends StatelessWidget {
                         keyboardType: TextInputType.text,
                         textInputAction: TextInputAction.next,
                         // Moves focus to next.
-                        validator: (String? value) {
-                          if (value!.isEmpty) {
+                        validator: (String value) {
+                          if (value.isEmpty) {
                             return 'you must type name';
                           }
                         },
@@ -251,8 +251,8 @@ class CreditCardScreen extends StatelessWidget {
                                     keyboardType: TextInputType.number,
                                     textInputAction: TextInputAction.next,
                                     // Moves focus to next.
-                                    validator: (String? value) {
-                                      if (value!.isEmpty) {
+                                    validator: (String value) {
+                                      if (value.isEmpty) {
                                         return 'you must type expire date';
                                       }
                                       var expireDate =
@@ -328,8 +328,8 @@ class CreditCardScreen extends StatelessWidget {
                                     keyboardType: TextInputType.number,
                                     textInputAction: TextInputAction.done,
                                     // Moves focus to next.
-                                    validator: (String? value) {
-                                      if (value!.isEmpty) {
+                                    validator: (String value) {
+                                      if (value.isEmpty) {
                                         return 'you must type CVC Number';
                                       }
                                     },
@@ -369,7 +369,7 @@ class CreditCardScreen extends StatelessWidget {
                       ),
                       defaultButton(
                         function: () {
-                          if (formKey.currentState!.validate()) {
+                          if (formKey.currentState.validate()) {
 
                             cubit.navigate(context, ActivationScreen());
 

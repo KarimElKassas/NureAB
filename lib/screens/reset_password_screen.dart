@@ -105,8 +105,8 @@ class ResetPasswordScreen extends StatelessWidget {
                         controller: newPasswordController,
                         keyboardType: TextInputType.visiblePassword,
                         textInputAction: TextInputAction.next, // Moves focus to next.
-                        validator: (String? value) {
-                          if (value!.isEmpty) {
+                        validator: (String value) {
+                          if (value.isEmpty) {
                             return 'you must type new password';
                           }
                         },
@@ -180,8 +180,8 @@ class ResetPasswordScreen extends StatelessWidget {
                         controller: confirmNewPasswordController,
                         keyboardType: TextInputType.visiblePassword,
                         textInputAction: TextInputAction.done, // Moves focus to next.
-                        validator: (String? value) {
-                          if (value!.isEmpty) {
+                        validator: (String value) {
+                          if (value.isEmpty) {
                             return 'you must type confirm password';
                           }
                         },
@@ -216,7 +216,7 @@ class ResetPasswordScreen extends StatelessWidget {
                       ),
                       defaultButton(
                           function: () {
-                            if(formKey.currentState!.validate()){
+                            if(formKey.currentState.validate()){
 
                               var newPass = newPasswordController.text.toString();
                               var confirmNewPass = confirmNewPasswordController.text.toString();

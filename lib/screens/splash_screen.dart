@@ -7,7 +7,7 @@ import 'package:nureab/cubit/splashScreen/splash_screen_states.dart';
 import 'package:nureab/shared/constants.dart';
 
 class SplashScreen extends StatelessWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

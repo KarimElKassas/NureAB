@@ -5,5 +5,5 @@ class OnBoardingModel {
   final String body;
 
   OnBoardingModel(
-      {required this.firstTitle,required this.secondTitle, required this.body, required this.image});
+      { this.firstTitle, this.secondTitle,  this.body,  this.image});
 }

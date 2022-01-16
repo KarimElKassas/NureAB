@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nureab/cubit/splashScreen/splash_screen_states.dart';
-import 'package:nureab/screens/home_screen.dart';
 import 'package:nureab/screens/login_screen.dart';
 import 'package:nureab/screens/on_boarding_screen.dart';
 import 'package:nureab/shared/constants.dart';
@@ -14,7 +13,7 @@ class SplashScreenCubit extends Cubit<SplashScreenStates>{
 
   static SplashScreenCubit get(context) => BlocProvider.of(context);
 
-  bool? secondTime;
+  bool secondTime;
 
   Future<void> navigate(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -25,7 +24,7 @@ class SplashScreenCubit extends Cubit<SplashScreenStates>{
 
     if(secondTime != null){
 
-      if(secondTime!){
+      if(secondTime){
 
         navigateAndFinish(context, LoginScreen());
         emit(SplashScreenSuccessEndState());

@@ -67,8 +67,8 @@ class ActivationScreen extends StatelessWidget {
                         controller: codeController,
                         keyboardType: TextInputType.number,
                         textInputAction: TextInputAction.done, // Moves focus to next.
-                        validator: (String? value) {
-                          if (value!.isEmpty) {
+                        validator: (String value) {
+                          if (value.isEmpty) {
                             return 'you must type activation code';
                           }
                         },
@@ -103,7 +103,7 @@ class ActivationScreen extends StatelessWidget {
                       ),
                       defaultButton(
                           function: () {
-                            if(formKey.currentState!.validate()){
+                            if(formKey.currentState.validate()){
 
                               showToast(
                                   message: "Done",
