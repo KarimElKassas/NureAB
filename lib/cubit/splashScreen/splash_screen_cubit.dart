@@ -22,6 +22,11 @@ class SplashScreenCubit extends Cubit<SplashScreenStates>{
 
     await Future.delayed(const Duration(milliseconds: 4000), () {});
 
+    navigateAndFinish(context, const OnBoardingScreen());
+    emit(SplashScreenSuccessEndState());
+
+
+/*
     if(secondTime != null){
 
       if(secondTime){
@@ -37,7 +42,7 @@ class SplashScreenCubit extends Cubit<SplashScreenStates>{
     }else{
       navigateAndFinish(context, const OnBoardingScreen());
       emit(SplashScreenSuccessEndState());
-    }
+    }*/
 
   }
 

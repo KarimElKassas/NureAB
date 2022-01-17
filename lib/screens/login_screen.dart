@@ -8,7 +8,7 @@ import 'package:nureab/screens/registration_screen.dart';
 import 'package:nureab/screens/reset_password_screen.dart';
 import 'package:nureab/shared/constants.dart';
 
-import 'check_blutooth.dart';
+import 'check_bluetooth.dart';
 
 class LoginScreen extends StatelessWidget {
   var emailController = TextEditingController();
@@ -221,7 +221,7 @@ class LoginScreen extends StatelessWidget {
                           /* if(formKey.currentState!.validate()){
 
                             }*/
-                          navigateTo(context, CheckBlutooth());
+                          navigateTo(context, CheckBluetooth());
                         },
                         text: "Sign In",
                         background: orangeColor,

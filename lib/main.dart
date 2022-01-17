@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nureab/screens/activation_screen.dart';
-import 'package:nureab/screens/credit_card_screen.dart';
-import 'package:nureab/screens/login_screen.dart';
-import 'package:nureab/screens/registration_screen.dart';
-import 'package:nureab/screens/reset_password_screen.dart';
+import 'package:nureab/cubit/bottom_nav/bottom_nav_cubit.dart';
+import 'package:nureab/cubit/bottom_nav/bottom_nav_states.dart';
 import 'package:nureab/screens/splash_screen.dart';
 import 'package:nureab/shared/bloc_observer.dart';
 
@@ -23,16 +20,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize:const Size(411.42857, 899.42857),
+        designSize: const Size(411.42857, 899.42857),
         builder: () {
-          return MaterialApp(
-            title: 'NureAB',
-            theme: ThemeData(
-              fontFamily: "Open Sans",
-              primarySwatch: Colors.blue,
+          return BlocProvider(
+            create: (context) => BottomNavCubit(),
+            child: BlocConsumer<BottomNavCubit, BottomNavStates>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                return MaterialApp(
+                  title: 'NureAB',
+                  theme: ThemeData(
+                    fontFamily: "Open Sans",
+                    primarySwatch: Colors.blue,
+                  ),
+                  debugShowCheckedModeBanner: false,
+                  home: SplashScreen(),
+                );
+              },
             ),
-            debugShowCheckedModeBanner: false,
-            home: const SplashScreen(),
           );
         });
   }

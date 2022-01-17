@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:nureab/cubit/bottom_nav/bottom_nav_cubit.dart';
+import 'package:nureab/cubit/bottom_nav/bottom_nav_states.dart';
 import 'package:nureab/shared/constants.dart';
-import 'home_screens/settings_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'package:nureab/screens/home_screens/patientList_screen.dart';
-
-import 'home_screens/home_screen.dart';
 
 class BottomNavigation extends StatefulWidget {
   int comingIndex = -1;
@@ -17,79 +18,85 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
-  int currentIndex = 0;
-
-  final tabs = [HomeScreen(), PatientScreen(), SettingsScreen()];
 
   @override
   void initState() {
     (widget.comingIndex != -1 && widget.comingIndex != null)
-        ? currentIndex = widget.comingIndex
-        : currentIndex = 0;
+        ? BottomNavCubit.get(context).currentIndex = widget.comingIndex
+        : BottomNavCubit.get(context).currentIndex = 0;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Column(
-            children: [
+    return BlocProvider(
+      create: (context) => BottomNavCubit(),
+      child: BlocConsumer<BottomNavCubit, BottomNavStates>(
+        listener: (context, state){},
+        builder: (context, state){
 
-              Container(
-                color: greyFiveColor,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(color: greyFiveColor,
-                          width: 150.w,
-                          child: Image.asset('assets/images/loho.PNG')),
-                      Icon(
-                        Icons.notifications,
-                        color: darkBlueColor,
-                        size: 35,
-                      )
-                    ],
-                  ),
+          var cubit = BottomNavCubit.get(context);
+
+          return Scaffold(
+            appBar: AppBar(
+              systemOverlayStyle: SystemUiOverlayStyle(
+                statusBarColor: greyFiveColor,
+                statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
+                statusBarBrightness: Brightness.light, // For iOS (dark icons)
+              ),
+              toolbarHeight: 0,
+              elevation: 0,
+            ),
+            body: SingleChildScrollView(
+              child: SafeArea(
+                child: Column(
+                  children: [
+                    Container(
+                      color: greyFiveColor,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(color: greyFiveColor,
+                                width: 150.w,
+                                child: SvgPicture.asset("assets/images/logo.svg")),
+                            Icon(
+                              IconlyBold.notification,
+                              color: darkBlueColor,
+                              size: 35,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    cubit.screens[cubit.currentIndex],
+                  ],
                 ),
               ),
-              tabs[currentIndex],
-            ],
-          ),
-        ),
-      ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ClipRRect(
-          borderRadius: BorderRadius.all(
-            Radius.circular(30),
-          ),
-          child: BottomNavigationBar(
-            iconSize: 30,
-            onTap: (index) {
-              setState(() {
-                currentIndex = index;
-              });
-            },
-            unselectedItemColor: darkBlueColor,
-            selectedItemColor: secondaryColor,
-            backgroundColor: greyFiveColor,
-            currentIndex: currentIndex,
-            elevation: 20,
-            items: [
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.home_outlined), label: "Home"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.people_outline),
-                  label: "Patient's List"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.settings_outlined), label: "Settings")
-            ],
-          ),
-        ),
+            ),
+            bottomNavigationBar: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(30),
+                ),
+                child: BottomNavigationBar(
+                  iconSize: 30,
+                  onTap: (index) {
+                    cubit.changeBottomNavBarIndex(index, context);
+                  },
+                  unselectedItemColor: darkBlueColor,
+                  selectedItemColor: secondaryColor,
+                  backgroundColor: greyFiveColor,
+                  currentIndex: cubit.currentIndex,
+                  elevation: 20,
+                  items: cubit.bottomNavigationItems,
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
