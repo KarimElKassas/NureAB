@@ -8,6 +8,8 @@ import 'package:nureab/screens/registration_screen.dart';
 import 'package:nureab/screens/reset_password_screen.dart';
 import 'package:nureab/shared/constants.dart';
 
+import 'check_blutooth.dart';
+
 class LoginScreen extends StatelessWidget {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
@@ -93,7 +95,8 @@ class LoginScreen extends StatelessWidget {
                       TextFormField(
                         controller: emailController,
                         keyboardType: TextInputType.emailAddress,
-                        textInputAction: TextInputAction.next, // Moves focus to next.
+                        textInputAction: TextInputAction.next,
+                        // Moves focus to next.
                         validator: (String value) {
                           if (value.isEmpty) {
                             return 'you must type email address';
@@ -156,7 +159,8 @@ class LoginScreen extends StatelessWidget {
                       TextFormField(
                         controller: passwordController,
                         keyboardType: TextInputType.visiblePassword,
-                        textInputAction: TextInputAction.done, // Moves focus to next.
+                        textInputAction: TextInputAction.done,
+                        // Moves focus to next.
                         validator: (String value) {
                           if (value.isEmpty) {
                             return 'you must type password';
@@ -195,9 +199,7 @@ class LoginScreen extends StatelessWidget {
                         children: [
                           InkWell(
                             onTap: () {
-
                               cubit.navigate(context, ResetPasswordScreen());
-
                             },
                             child: const Text(
                               "Forgot Password ?",
@@ -215,33 +217,33 @@ class LoginScreen extends StatelessWidget {
                         height: 48.0,
                       ),
                       defaultButton(
-                          function: () {
-                           /* if(formKey.currentState!.validate()){
+                        function: () {
+                          /* if(formKey.currentState!.validate()){
 
                             }*/
-navigateTo(context, BottomNavigation(comingIndex: 0,));
-                          },
-                          text: "Sign In",
-                          background: orangeColor,
-                          isUpperCase: false,
-                          textStyle: const TextStyle(
-                              fontWeight: FontWeight.w800, letterSpacing: 1.5),
+                          navigateTo(context, CheckBlutooth());
+                        },
+                        text: "Sign In",
+                        background: orangeColor,
+                        isUpperCase: false,
+                        textStyle: const TextStyle(
+                            fontWeight: FontWeight.w800, letterSpacing: 1.5),
                       ),
                       const SizedBox(
                         height: 24.0,
                       ),
                       defaultButton(
                         function: () {
-
                           cubit.navigate(context, RegistrationScreen());
-
                         },
                         text: "Sign Up",
                         background: Colors.transparent,
                         borderColor: Colors.white,
                         isUpperCase: false,
                         textStyle: const TextStyle(
-                            fontWeight: FontWeight.w800, letterSpacing: 1.5,color: Colors.white),
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: 1.5,
+                            color: Colors.white),
                       ),
                     ],
                   ),

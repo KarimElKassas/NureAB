@@ -31,9 +31,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: SafeArea(
           child: Column(
             children: [
 
@@ -60,34 +60,34 @@ class _BottomNavigationState extends State<BottomNavigation> {
             ],
           ),
         ),
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.all(
-              Radius.circular(30),
-            ),
-            child: BottomNavigationBar(
-              iconSize: 30,
-              onTap: (index) {
-                setState(() {
-                  currentIndex = index;
-                });
-              },
-              unselectedItemColor: darkBlueColor,
-              selectedItemColor: secondaryColor,
-              backgroundColor: greyFiveColor,
-              currentIndex: currentIndex,
-              elevation: 20,
-              items: [
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.home_outlined), label: "Home"),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.people_outline),
-                    label: "Patient's List"),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.settings_outlined), label: "Settings")
-              ],
-            ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.all(
+            Radius.circular(30),
+          ),
+          child: BottomNavigationBar(
+            iconSize: 30,
+            onTap: (index) {
+              setState(() {
+                currentIndex = index;
+              });
+            },
+            unselectedItemColor: darkBlueColor,
+            selectedItemColor: secondaryColor,
+            backgroundColor: greyFiveColor,
+            currentIndex: currentIndex,
+            elevation: 20,
+            items: [
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.home_outlined), label: "Home"),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.people_outline),
+                  label: "Patient's List"),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.settings_outlined), label: "Settings")
+            ],
           ),
         ),
       ),

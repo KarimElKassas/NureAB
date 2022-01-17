@@ -34,14 +34,14 @@ class RegistrationScreen extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               child: Padding(
                 padding: const EdgeInsets.only(
-                    top: 120.0, bottom: 36.0, left: 18.0, right: 18.0),
+                    top: 60.0, bottom: 36.0, left: 18.0, right: 18.0),
                 child: Form(
                   key: formKey,
                   child: Column(
                     children: [
                       SvgPicture.asset("assets/images/app_logo.svg"),
                       const SizedBox(
-                        height: 42.0,
+                        height: 10.0,
                       ),
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 18.0),
@@ -56,7 +56,7 @@ class RegistrationScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(
-                        height: 42.0,
+                        height: 30.0,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 4.0),
@@ -527,20 +527,22 @@ class RegistrationScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(
-                        height: 48.0,
+                        height: 26.0,
                       ),
                       defaultButton(
                         function: () {
                           if (formKey.currentState.validate()) {
                             var newPass = passwordController.text.toString();
-                            var confirmNewPass = confirmPasswordController.text.toString();
-                            if(newPass != confirmNewPass){
+                            var confirmNewPass =
+                                confirmPasswordController.text.toString();
+                            if (newPass != confirmNewPass) {
                               showToast(
-                                  message: "Password and Confirm Password doesn't match ",
+                                  message:
+                                      "Password and Confirm Password doesn't match ",
                                   length: Toast.LENGTH_SHORT,
                                   gravity: ToastGravity.BOTTOM,
                                   timeInSecForIosWeb: 3);
-                            }else{
+                            } else {
                               cubit.navigate(context, CreditCardScreen());
                             }
                           }
@@ -552,7 +554,7 @@ class RegistrationScreen extends StatelessWidget {
                             fontWeight: FontWeight.w800, letterSpacing: 1.5),
                       ),
                       const SizedBox(
-                        height: 24.0,
+                        height: 12.0,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
