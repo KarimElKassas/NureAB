@@ -5,6 +5,7 @@ import 'package:nureab/cubit/bottom_nav/bottom_nav_states.dart';
 import 'package:nureab/screens/home_screens/home/home_screen.dart';
 import 'package:nureab/screens/home_screens/patientList_screen.dart';
 import 'package:nureab/screens/home_screens/settings_screen.dart';
+import 'package:nureab/shared/constants.dart';
 
 class BottomNavCubit extends Cubit<BottomNavStates> {
   BottomNavCubit() : super(BottomNavInitialState());
@@ -17,19 +18,19 @@ class BottomNavCubit extends Cubit<BottomNavStates> {
   List<BottomNavigationBarItem> bottomNavigationItems = [
     const BottomNavigationBarItem(
       icon: Icon(
-        Icons.home,
+        IconlyBroken.home,
       ),
       label: "Home",
     ),
     const BottomNavigationBarItem(
       icon: Icon(
-        Icons.people,
+        IconlyBroken.user2,
       ),
       label: "Patient's List",
     ),
     const BottomNavigationBarItem(
       icon: Icon(
-        Icons.settings,
+        IconlyBroken.setting,
       ),
       label: "Settings",
     ),
@@ -44,5 +45,11 @@ class BottomNavCubit extends Cubit<BottomNavStates> {
     currentIndex = index;
 
     emit(BottomNavChangeIndexState());
+  }
+  void navigate(BuildContext context, route){
+
+    navigateTo(context, route);
+
+    emit(BottomNavSuccessEndState());
   }
 }

@@ -5,6 +5,7 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nureab/cubit/bottom_nav/bottom_nav_cubit.dart';
 import 'package:nureab/cubit/bottom_nav/bottom_nav_states.dart';
+import 'package:nureab/screens/notifications_screen.dart';
 import 'package:nureab/shared/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -61,10 +62,15 @@ class _BottomNavigationState extends State<BottomNavigation> {
                             Container(color: greyFiveColor,
                                 width: 150.w,
                                 child: SvgPicture.asset("assets/images/logo.svg")),
-                            Icon(
-                              IconlyBold.notification,
-                              color: darkBlueColor,
-                              size: 35,
+                            InkWell(
+                              onTap: (){
+                                cubit.navigate(context, NotificationsScreen());
+                              },
+                              child: Icon(
+                                IconlyBold.notification,
+                                color: darkBlueColor,
+                                size: 35,
+                              ),
                             )
                           ],
                         ),

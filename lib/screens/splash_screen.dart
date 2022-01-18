@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nureab/cubit/splashScreen/splash_screen_cubit.dart';
@@ -18,6 +19,16 @@ class SplashScreen extends StatelessWidget {
         builder: (context, state){
 
           return Scaffold(
+            appBar: AppBar(
+              systemOverlayStyle: SystemUiOverlayStyle(
+                statusBarColor: darkBlueColor,
+                statusBarIconBrightness: Brightness.light, // For Android (dark icons)
+                statusBarBrightness: Brightness.dark, // For iOS (dark icons)
+              ),
+              toolbarHeight: 0,
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+            ),
             backgroundColor: darkBlueColor,
             body: FadeInDown(
               duration: const Duration(milliseconds: 1500),

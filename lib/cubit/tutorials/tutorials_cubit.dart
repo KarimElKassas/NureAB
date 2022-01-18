@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nureab/cubit/tutorials/tutorials_states.dart';
 import 'package:nureab/model/home_items_model.dart';
+import 'package:nureab/screens/home_screens/home/tutorialsDetails_screen.dart';
 import 'package:nureab/shared/constants.dart';
 
 class TutorialsCubit extends Cubit<TutorialsStates>{
@@ -16,7 +17,7 @@ class TutorialsCubit extends Cubit<TutorialsStates>{
     HomeItemsModel(
         subTitle: "Setup a program Tutorial", image: 'assets/images/tut4.png'),
     HomeItemsModel(
-        subTitle: "Treat New patient Tutorial", image: 'assets/images/tut3.png'),
+        subTitle: "Treat New patient Tutorial", image: 'assets/images/tut3.png', destination: TutorialDetailsScreen()),
     HomeItemsModel(
         subTitle: "Treat Existing Patient Tutorial",
         image: 'assets/images/tut2.png'),

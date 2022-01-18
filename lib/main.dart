@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nureab/cubit/bottom_nav/bottom_nav_cubit.dart';
 import 'package:nureab/cubit/bottom_nav/bottom_nav_states.dart';
+import 'package:nureab/screens/home_screens/home/treatmentPrograms_screen.dart';
+import 'package:nureab/screens/program_setup_screen.dart';
 import 'package:nureab/screens/splash_screen.dart';
 import 'package:nureab/shared/bloc_observer.dart';
 

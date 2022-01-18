@@ -59,7 +59,9 @@ class _TutorialsScreenState extends State<TutorialsScreen> {
                                 ),
                               ),
                               onTap: () {
-                                // navigateTo(context, tutorialsItems[index].destination);
+                                if(cubit.tutorialsItems[index].destination != null){
+                                  cubit.navigate(context, cubit.tutorialsItems[index].destination);
+                                }
                               },
                             ),
                             Positioned(

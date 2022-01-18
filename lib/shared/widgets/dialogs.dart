@@ -1,298 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_screenutil/size_extension.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:nureab/cubit/treat_programs/treat_programs_cubit.dart';
-import 'package:nureab/cubit/treat_programs/treat_programs_states.dart';
-import 'package:nureab/screens/home_screens/home/tutorials_screen.dart';
-import 'package:nureab/shared/constants.dart';
-import 'package:nureab/shared/widgets/back_bar.dart';
-
-import '../../bottomNavigation.dart';
-
-class TreatmentProgramsScreen extends StatelessWidget {
-  var radioSelected = 1;
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => TreatProgramsCubit(),
-      child: BlocConsumer<TreatProgramsCubit, TreatProgramsStates>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          var cubit = TreatProgramsCubit.get(context);
-
-          return Scaffold(
-            appBar: AppBar(
-              systemOverlayStyle: SystemUiOverlayStyle(
-                statusBarColor: greyFiveColor,
-                statusBarIconBrightness: Brightness.dark,
-                // For Android (dark icons)
-                statusBarBrightness: Brightness.light, // For iOS (dark icons)
-              ),
-              toolbarHeight: 0,
-              elevation: 0,
-            ),
-            body: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                BackBar(),
-                SizedBox(
-                  height: 24.0.h,
-                ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    physics: BouncingScrollPhysics(),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Text(
-                            "Treatment Programs",
-                            style: TextStyle(
-                                color: darkBlueColor,
-                                fontWeight: FontWeight.w900,
-                                letterSpacing: 1.0,
-                                fontSize: ScreenUtil()
-                                    .setSp(26, allowFontScalingSelf: true),
-                                overflow: TextOverflow.ellipsis),
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 5,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 24.0.h,
-                        ),
-                        Row(
-                          children: [
-                            SizedBox(
-                              width: 10.0.w,
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Column(
-                                children: [
-                                  defaultButtonOnlyIcon(
-                                    function: () {
-                                      if (!cubit.isPIP) {
-                                        cubit.changePIP();
-                                      }
-                                    },
-                                    isSvg: true,
-                                    svgPath: cubit.isPIP
-                                        ? "assets/images/whiteHandPIP.svg"
-                                        : "assets/images/darkHandPIP.svg",
-                                    background: cubit.isPIP
-                                        ? darkBlueColor
-                                        : greyFiveColor,
-                                    borderColor: cubit.isPIP
-                                        ? darkBlueColor
-                                        : greyFiveColor,
-                                  ),
-                                  SizedBox(
-                                    height: 8.0.h,
-                                  ),
-                                  Text(
-                                    "PIP",
-                                    style: TextStyle(
-                                      color: darkBlueColor,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: ScreenUtil().setSp(16,
-                                          allowFontScalingSelf: true),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              width: 6.0.w,
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Column(
-                                children: [
-                                  defaultButtonOnlyIcon(
-                                    function: () {
-                                      if (!cubit.isMCP) {
-                                        cubit.changeMCP();
-                                      }
-                                    },
-                                    isSvg: true,
-                                    svgPath: cubit.isMCP
-                                        ? "assets/images/whiteHandMCP.svg"
-                                        : "assets/images/darkHandMCP.svg",
-                                    background: cubit.isMCP
-                                        ? darkBlueColor
-                                        : greyFiveColor,
-                                    borderColor: cubit.isMCP
-                                        ? darkBlueColor
-                                        : greyFiveColor,
-                                  ),
-                                  SizedBox(
-                                    height: 8.0.h,
-                                  ),
-                                  Text(
-                                    "MCP",
-                                    style: TextStyle(
-                                      color: darkBlueColor,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: ScreenUtil().setSp(16,
-                                          allowFontScalingSelf: true),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              width: 6.0.w,
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Column(
-                                children: [
-                                  defaultButtonOnlyIcon(
-                                    function: () {
-                                      if (!cubit.isThumb) {
-                                        cubit.changeThumb();
-                                      }
-                                    },
-                                    isSvg: true,
-                                    svgPath: cubit.isThumb
-                                        ? "assets/images/whiteHandThumb.svg"
-                                        : "assets/images/darkHandThumb.svg",
-                                    background: cubit.isThumb
-                                        ? darkBlueColor
-                                        : greyFiveColor,
-                                    borderColor: cubit.isThumb
-                                        ? darkBlueColor
-                                        : greyFiveColor,
-                                  ),
-                                  SizedBox(
-                                    height: 8.0.h,
-                                  ),
-                                  Text(
-                                    "Thumb",
-                                    style: TextStyle(
-                                      color: darkBlueColor,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: ScreenUtil().setSp(16,
-                                          allowFontScalingSelf: true),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              width: 6.0.w,
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Column(
-                                children: [
-                                  defaultButtonOnlyIcon(
-                                    function: () {
-                                      if (!cubit.isStroke) {
-                                        cubit.changeStroke();
-                                      }
-                                    },
-                                    isSvg: true,
-                                    svgPath: cubit.isStroke
-                                        ? "assets/images/yellowStroke.svg"
-                                        : "assets/images/darkStroke.svg",
-                                    background: cubit.isStroke
-                                        ? darkBlueColor
-                                        : greyFiveColor,
-                                    borderColor: cubit.isStroke
-                                        ? darkBlueColor
-                                        : greyFiveColor,
-                                  ),
-                                  SizedBox(
-                                    height: 8.0.h,
-                                  ),
-                                  Text(
-                                    "Stroke",
-                                    style: TextStyle(
-                                      color: darkBlueColor,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: ScreenUtil().setSp(16,
-                                          allowFontScalingSelf: true),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              width: 10.0.w,
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 24.0.h,
-                        ),
-                        Stack(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Container(
-                                  height: 250.h,
-                                  width: MediaQuery.of(context).size.width,
-                                  child: Image.asset(
-                                    'assets/images/videoThumbnail.png',
-                                    fit: BoxFit.fill,
-                                  )),
-                            ),
-                            Positioned(
-                                top: 120.h,
-                                right: 0,
-                                left: 0,
-                                child: SvgPicture.asset(
-                                  'assets/images/play.svg',
-                                ))
-                          ],
-                        ),
-                        SizedBox(
-                          height: 16.0.h,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                cubit.programDescriptionHead,
-                                style: TextStyle(
-                                    color: darkBlueColor,
-                                    fontWeight: FontWeight.w900,
-                                    letterSpacing: 1.0,
-                                    fontSize: ScreenUtil()
-                                        .setSp(18, allowFontScalingSelf: true),
-                                    overflow: TextOverflow.ellipsis),
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 5,
-                              ),
-                              SizedBox(
-                                height: 8.0.h,
-                              ),
-                              Text(
-                                cubit.programDescription,
-                                style: TextStyle(
-                                    color: Colors.grey,
-                                    letterSpacing: 1.0,
-                                    fontSize: ScreenUtil()
-                                        .setSp(16, allowFontScalingSelf: true),
-                                    overflow: TextOverflow.ellipsis),
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 5,
-                              ),
-                              SizedBox(
-                                height: 36.0.h,
-                              ),
-                              defaultButton(
-                                function: () {
+/*
                                   showDialog(
                                     context: context,
                                     builder: (context) {
@@ -585,90 +291,160 @@ class TreatmentProgramsScreen extends StatelessWidget {
                                       );
                                     },
                                   );
-                                },
-                                text: "Start Program",
-                                textStyle: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: 1.0,
-                                  fontSize: ScreenUtil()
-                                      .setSp(18, allowFontScalingSelf: true),
-                                ),
-                                isUpperCase: false,
-                                background: lightSecondaryColor,
-                                borderColor: lightSecondaryColor,
+*/
+
+
+
+//-------------------------------------------------------------------------------
+
+
+/*
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return StatefulBuilder(
+                          builder: (context, setState){
+
+                            return Dialog(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
                               ),
-                              SizedBox(
-                                height: 36.0.h,
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 6),
-                          child: Stack(
-                            children: [
-                              InkWell(
-                                child: Container(
-                                  height: 180.h,
-                                  child: Card(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      elevation: 3,
-                                      child: Image.asset(
-                                        "assets/images/base.png",
-                                        fit: BoxFit.fill,
-                                      )),
-                                ),
-                                onTap: () {
-                                  cubit.navigate(context, TutorialsScreen());
-                                },
-                              ),
-                              Positioned(
-                                top: 90.h,
-                                left: 30.w,
+                              child: Container(
+                                height: 320.h,
+                                width: double.infinity,
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      "Tutorials",
-                                      textAlign: TextAlign.end,
-                                      style: TextStyle(
-                                          fontSize: ScreenUtil().setSp(24,
-                                              allowFontScalingSelf: true),
-                                          color: Colors.white),
+                                    SizedBox(
+                                      height: 20.h,
+                                    ),
+                                    Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 20),
+                                        child: Text(
+                                          "Patient take off the device?",
+                                          style: TextStyle(
+                                              fontSize: ScreenUtil().setSp(16,
+                                                  allowFontScalingSelf: true),
+                                              color: darkBlueColor,
+                                              fontWeight: FontWeight.bold),
+                                          textAlign: TextAlign.center,
+                                        )),
+                                    SizedBox(
+                                      height: 8.h,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 16),
+                                      child: Divider(
+                                        thickness: 2,
+                                        color: greyColor,
+                                      ),
                                     ),
                                     SizedBox(
-                                      height: 4.h,
+                                      height: 8.h,
                                     ),
-                                    Text(
-                                      "Here To help you",
-                                      textAlign: TextAlign.end,
-                                      style: TextStyle(
-                                          fontSize: ScreenUtil().setSp(18,
-                                              allowFontScalingSelf: true),
-                                          color: Colors.orange),
-                                    )
+                                    Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 20),
+                                        child: Text(
+                                          "To keep you patient’s hand safe we need a confirmation that he/she have taken the device off so the device return to it’s default postion",
+                                          style: TextStyle(
+                                            fontSize: ScreenUtil().setSp(13,
+                                                allowFontScalingSelf: true),
+                                            color: darkBlueColor,
+                                          ),
+                                          textAlign: TextAlign.start,
+                                        )),
+                                    SizedBox(
+                                      height: 8.h,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Padding(
+                                            padding:
+                                            const EdgeInsets.only(left: 20),
+                                            child: Text(
+                                              "Take off the device",
+                                              style: TextStyle(
+                                                  fontSize: ScreenUtil().setSp(14,
+                                                      allowFontScalingSelf: true),
+                                                  color: greySubTitleColor,
+                                                  fontWeight: FontWeight.w600),
+                                              textAlign: TextAlign.start,
+                                            )),
+                                        Checkbox(
+                                          value: isChecked,
+                                          onChanged: (newValue) {
+                                            setState(() {
+                                            isChecked = newValue;
+                                            print('is checked $isChecked');
+                                          });
+                                          },
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 16.h,
+                                    ),
+                                    Padding(
+                                      padding:
+                                      const EdgeInsets.symmetric(horizontal: 8),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Expanded(
+                                            flex: 1,
+                                            child: defaultButton(
+                                              function: () {
+                                                cubit.navigate(
+                                                    context,
+                                                    BottomNavigation(
+                                                      comingIndex: 0,
+                                                    ));
+                                              },
+                                              text: "Yes,Taken Off",
+                                              background: lightSecondaryColor,
+                                              borderColor: lightSecondaryColor,
+                                              isUpperCase: false,
+                                              textStyle:  TextStyle(
+                                                  fontWeight: FontWeight.w800,
+                                                  fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
+                                                  color: Colors.white),
+                                            ),
+                                          ),
+                                          SizedBox(width: 8.0.w,),
+                                          Expanded(
+                                            flex: 1,
+                                            child: defaultButton(
+                                              function: () {
+                                                cubit.navigate(
+                                                    context,
+                                                    BottomNavigation(
+                                                      comingIndex: 0,
+                                                    ));
+                                              },
+                                              text: "Keep Position",
+                                              background: greyFiveColor,
+                                              textColor: darkBlueColor,
+                                              borderColor: greyFiveColor,
+                                              isUpperCase: false,
+                                              textStyle: TextStyle(
+                                                  fontWeight: FontWeight.w800,
+                                                  fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
+                                                  color: Color(0xff0F2644)),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ],
-                                  crossAxisAlignment: CrossAxisAlignment.start,
                                 ),
-                              )
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 36.0.h,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    );
+*/

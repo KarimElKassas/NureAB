@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nureab/model/drop_list_model.dart';
 import 'package:nureab/shared/constants.dart';
 
@@ -75,10 +76,13 @@ class _SelectDropListState extends State<SelectDropList>
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-               Icon(
-                widget.listIcon,
-                color: darkBlueColor,
+               Visibility(
+                 visible: widget.listIcon != null,
+                 child: Icon(
+                  widget.listIcon,
+                  color: darkBlueColor,
               ),
+               ),
               const SizedBox(
                 width: 10,
               ),
@@ -91,7 +95,7 @@ class _SelectDropListState extends State<SelectDropList>
                 },
                 child: Text(
                   optionItemSelected.title,
-                  style:  TextStyle(color: darkBlueColor, fontSize: 16),
+                  style:  TextStyle(color: darkBlueColor, fontSize: ScreenUtil().setSp(16,allowFontScalingSelf: true)),
                 ),
               )),
               Align(
@@ -138,7 +142,7 @@ class _SelectDropListState extends State<SelectDropList>
 
   Widget _buildSubMenu(OptionItem item, BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 26.0, top: 5, bottom: 5),
+      padding: const EdgeInsets.only(left: 26.0, top: 5, bottom: 5, right: 26.0),
       child: GestureDetector(
         child: Row(
           children: <Widget>[
@@ -155,7 +159,7 @@ class _SelectDropListState extends State<SelectDropList>
                       style:  TextStyle(
                           color: darkBlueColor,
                           fontWeight: FontWeight.w700,
-                          fontSize: 14),
+                          fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true)),
                       maxLines: 3,
                       textAlign: TextAlign.start,
                       overflow: TextOverflow.ellipsis),

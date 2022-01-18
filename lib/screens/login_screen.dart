@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nureab/cubit/login/login_cubit.dart';
@@ -25,6 +26,16 @@ class LoginScreen extends StatelessWidget {
           var cubit = LoginCubit.get(context);
 
           return Scaffold(
+            appBar: AppBar(
+              systemOverlayStyle: SystemUiOverlayStyle(
+                statusBarColor: darkBlueColor,
+                statusBarIconBrightness: Brightness.light, // For Android (dark icons)
+                statusBarBrightness: Brightness.dark, // For iOS (dark icons)
+              ),
+              toolbarHeight: 0,
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+            ),
             backgroundColor: darkBlueColor,
             body: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),

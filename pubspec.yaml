@@ -38,7 +38,7 @@ dependencies:
   buildcondition: ^0.0.4
   intl: ^0.17.0
   flutter_screenutil: ^4.0.3+1
-
+  youtube_player_flutter: ^8.0.0
   font_awesome_flutter: ^9.2.0
   animate_do: ^2.0.0
   flutter_iconly: ^1.0.2

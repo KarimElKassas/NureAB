@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nureab/cubit/add_patient/add_patient_cubit.dart';
 import 'package:nureab/cubit/add_patient/add_patient_states.dart';
 import 'package:nureab/screens/bottomNavigation.dart';
+import 'package:nureab/screens/program_setup_screen.dart';
 import 'package:nureab/shared/constants.dart';
 import 'package:nureab/shared/widgets/back_bar.dart';
 import 'package:nureab/shared/widgets/select_drop_list.dart';
@@ -866,7 +867,7 @@ class _TreatNewPatientScreenState extends State<TreatNewPatientScreen> {
                             padding: EdgeInsets.symmetric(horizontal: 20.0.w),
                             child: defaultButton(
                               function: (){
-
+                                    cubit.navigate(context, ProgramSetupScreen());
                               },
                               text: "Proceed To Program Settings",
                               textStyle: TextStyle(

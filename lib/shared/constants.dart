@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_screenutil/size_extension.dart';
@@ -112,7 +113,7 @@ Widget defaultButton({
                   letterSpacing: 2,
                   color: textColor),
         ),
-        splashColor: background,
+        splashColor: Colors.transparent,
       ),
     );
 Widget defaultButtonWithIcon({
@@ -148,9 +149,9 @@ Widget defaultButtonWithIcon({
                 alignment: Alignment.centerLeft,
                   child: isSvg ? SvgPicture.asset(svgPath, color: iconColor,) : Icon(icon, color: iconColor,)) ,
             ),
-            SizedBox(width: 8.0.w,),
+            SizedBox(width: 18.0.w,),
             Expanded(
-              flex: 4,
+              flex: 6,
               child: Align(
                 alignment: Alignment.center,
                 child: Text(
@@ -166,7 +167,6 @@ Widget defaultButtonWithIcon({
                 ),
               ),
             ),
-            SizedBox(width: 8.0.w,),
             Expanded(
               flex: 1,
               child: Align(
@@ -178,7 +178,43 @@ Widget defaultButtonWithIcon({
         splashColor: Colors.transparent,
       ),
     );
-
+Widget defaultButtonOnlyIcon({
+  double width = double.infinity,
+  Color background = const Color(0xFFF69323),
+  Color borderColor = const Color(0xFFF69323),
+  Color textColor = const Color(0xff0F2644),
+  IconData icon = null,
+  Color iconColor = Colors.white,
+  double radius = 8.0,
+  bool isSvg = false,
+  String svgPath = "",
+  String imagePath = "",
+  VoidCallback function,
+}) =>
+    Container(
+      width: width,
+      decoration: BoxDecoration(
+        border: Border.all(color: borderColor),
+        borderRadius: BorderRadius.all(Radius.circular(radius)),
+        color: background,
+      ),
+      child: MaterialButton(
+        onPressed: function,
+        height: 30,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              flex: 1,
+              child: Align(
+                  alignment: Alignment.center,
+                  child: isSvg ? SvgPicture.asset(svgPath) : Image.asset(imagePath)) ,
+            ),
+          ],
+        ),
+        splashColor: Colors.transparent,
+      ),
+    );
 Future<bool> showToast({
    String message,
    dynamic length,

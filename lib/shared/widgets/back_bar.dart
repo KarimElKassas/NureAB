@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../constants.dart';
 class BackBar extends StatelessWidget {
@@ -10,9 +11,16 @@ BackBar({this.destination});
       color: greyFiveColor,
       child: InkWell(
         onTap: () {
-          navigateTo(
+
+          if (Navigator.canPop(context)) {
+            Navigator.pop(context);
+          } else {
+            SystemNavigator.pop();
+          }
+
+          /*navigateTo(
               context,
-              destination);
+              destination);*/
         },
         child: Padding(
           padding: const EdgeInsets.all(12.0),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nureab/cubit/home/home_states.dart';
 import 'package:nureab/model/home_items_model.dart';
+import 'package:nureab/screens/home_screens/home/treatmentPrograms_screen.dart';
 import 'package:nureab/screens/home_screens/home/tutorials_screen.dart';
 import 'package:nureab/shared/constants.dart';
 
@@ -17,7 +18,7 @@ class HomeCubit extends Cubit<HomeStates>{
         subTitle: "Here To Help You",destination: TutorialsScreen(),
         image: 'assets/images/base.png'),
     HomeItemsModel(
-        title: "Treatment programs",destination: TutorialsScreen(),
+        title: "Treatment programs",destination: TreatmentProgramsScreen(),
         subTitle: "Explore Programs",
         image: 'assets/images/base2.png'),
   ];

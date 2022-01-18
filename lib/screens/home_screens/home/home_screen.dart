@@ -9,8 +9,11 @@ import 'package:nureab/screens/home_screens/home/tutorials_screen.dart';
 import 'package:nureab/screens/home_screens/home/wearDevice_screen.dart';
 import 'package:nureab/shared/constants.dart';
 
+import '../../bottomNavigation.dart';
+
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key key}) : super(key: key);
+
+  bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
