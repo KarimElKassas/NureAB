@@ -8,6 +8,7 @@ import 'package:nureab/screens/home_screens/personal/personal_settings_screen.da
 import 'package:nureab/screens/privacy_screen.dart';
 import 'package:nureab/screens/share_feed_back_screen.dart';
 import 'package:nureab/shared/constants.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key key}) : super(key: key);
@@ -90,7 +91,7 @@ class SettingsScreen extends StatelessWidget {
                               Padding(
                                 padding:
                                     const EdgeInsets.only(top: 10,bottom: 10, left: 20),
-                                child: Text(
+                                child: AutoSizeText(
                                   moreList[index].label,
                                   style: TextStyle(
                                       fontSize: ScreenUtil().setSp(16,

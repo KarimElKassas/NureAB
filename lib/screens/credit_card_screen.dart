@@ -6,6 +6,7 @@ import 'package:nureab/cubit/credit_card/credit_card_cubit.dart';
 import 'package:nureab/cubit/credit_card/credit_card_states.dart';
 import 'package:nureab/screens/activation_screen.dart';
 import 'package:nureab/shared/constants.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class CreditCardScreen extends StatelessWidget {
   var cardNumberController = TextEditingController();
@@ -40,7 +41,7 @@ class CreditCardScreen extends StatelessWidget {
                       ),
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 18.0),
-                        child: Text(
+                        child: AutoSizeText(
                           "Credit Card Details",
                           style: TextStyle(
                               color: Colors.white,
@@ -164,7 +165,7 @@ class CreditCardScreen extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: const [
-                            Text(
+                            AutoSizeText(
                               "Card Holder Name",
                               style: TextStyle(
                                   color: Colors.white,
@@ -228,7 +229,7 @@ class CreditCardScreen extends StatelessWidget {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: const [
-                                      Text(
+                                      AutoSizeText(
                                         "Expire Date",
                                         style: TextStyle(
                                             color: Colors.white,
@@ -306,7 +307,7 @@ class CreditCardScreen extends StatelessWidget {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: const [
-                                      Text(
+                                      AutoSizeText(
                                         "CVC",
                                         style: TextStyle(
                                             color: Colors.white,
@@ -389,7 +390,7 @@ class CreditCardScreen extends StatelessWidget {
                         children: [
                           Column(
                             children: const [
-                              Text(
+                              AutoSizeText(
                                 'You Will receive an activation code in',
                                 style: TextStyle(
                                     color: Colors.white,
@@ -397,7 +398,7 @@ class CreditCardScreen extends StatelessWidget {
                                     fontSize: 16.0,
                                     overflow: TextOverflow.ellipsis),
                               ),
-                              Text(
+                              AutoSizeText(
                                 'SMS on your phone now.',
                                 style: TextStyle(
                                     color: Colors.white,

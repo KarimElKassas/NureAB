@@ -7,6 +7,7 @@ import 'package:nureab/cubit/personal/personal_settings/personal_settings_cubit.
 import 'package:nureab/cubit/personal/personal_settings/personal_settings_states.dart';
 import 'package:nureab/screens/home_screens/personal/personal_settings_edit_screen.dart';
 import 'package:nureab/shared/constants.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 import 'change_password_screen.dart';
 
@@ -60,7 +61,7 @@ class PersonalSettingsScreen extends StatelessWidget {
                                         color: darkBlueColor,
                                       ),
                                     ),
-                                    Text(
+                                    AutoSizeText(
                                       "Back",
                                       style: TextStyle(
                                           color: darkBlueColor,
@@ -85,7 +86,7 @@ class PersonalSettingsScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            AutoSizeText(
                               "Personal Settings",
                               style: TextStyle(
                                   color: darkBlueColor,
@@ -98,7 +99,7 @@ class PersonalSettingsScreen extends StatelessWidget {
                             ),
                             Padding(
                               padding: EdgeInsets.only(left: 4.0.w),
-                              child: Text(
+                              child: AutoSizeText(
                                 "Your Name",
                                 style: TextStyle(
                                     color: darkBlueColor,
@@ -149,7 +150,7 @@ class PersonalSettingsScreen extends StatelessWidget {
                             ),
                             Padding(
                               padding: EdgeInsets.only(left: 4.0.w),
-                              child: Text(
+                              child: AutoSizeText(
                                 "Email Address",
                                 style: TextStyle(
                                     color: darkBlueColor,
@@ -200,7 +201,7 @@ class PersonalSettingsScreen extends StatelessWidget {
                             ),
                             Padding(
                               padding: EdgeInsets.only(left: 4.0.w),
-                              child: Text(
+                              child: AutoSizeText(
                                 "Phone",
                                 style: TextStyle(
                                     color: darkBlueColor,
@@ -251,7 +252,7 @@ class PersonalSettingsScreen extends StatelessWidget {
                             ),
                             Padding(
                               padding: EdgeInsets.only(left: 4.0.w),
-                              child: Text(
+                              child: AutoSizeText(
                                 "Hospital / Clinic Name",
                                 style: TextStyle(
                                     color: darkBlueColor,

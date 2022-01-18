@@ -6,6 +6,7 @@ import 'package:nureab/cubit/activation/activation_cubit.dart';
 import 'package:nureab/cubit/activation/activation_states.dart';
 import 'package:nureab/screens/registration_screen.dart';
 import 'package:nureab/shared/constants.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class ActivationScreen extends StatelessWidget {
 
@@ -38,7 +39,7 @@ class ActivationScreen extends StatelessWidget {
                       ),
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 18.0),
-                        child: Text(
+                        child: AutoSizeText(
                           "Activation Code",
                           style: TextStyle(
                               color: Colors.white,
@@ -51,7 +52,7 @@ class ActivationScreen extends StatelessWidget {
                       const SizedBox(
                         height: 36.0,
                       ),
-                      Text(
+                      AutoSizeText(
                         "Enter Your Activation Code Received on Your Phone To Activate Your Account.",
                         textAlign: TextAlign.center,
                         style: TextStyle(

@@ -6,6 +6,7 @@ import 'package:nureab/cubit/tutorials/tutorials_states.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nureab/shared/widgets/back_bar.dart';
 import '../../bottomNavigation.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class TutorialsScreen extends StatefulWidget {
   const TutorialsScreen({Key key}) : super(key: key);
@@ -67,7 +68,7 @@ class _TutorialsScreenState extends State<TutorialsScreen> {
                             Positioned(
                               bottom: 25.h,
                               left: 25.w,
-                              child: Text(
+                              child: AutoSizeText(
                                 cubit.tutorialsItems[index].subTitle,
                                 textAlign: TextAlign.start,
                                 style: TextStyle(

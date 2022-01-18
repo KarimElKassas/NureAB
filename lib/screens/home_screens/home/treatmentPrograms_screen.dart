@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';import 'package:auto_size_text/auto_size_text.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_screenutil/size_extension.dart';
@@ -51,7 +52,7 @@ class TreatmentProgramsScreen extends StatelessWidget {
                       children: [
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Text(
+                          child: AutoSizeText(
                             "Treatment Programs",
                             style: TextStyle(
                                 color: darkBlueColor,
@@ -96,7 +97,7 @@ class TreatmentProgramsScreen extends StatelessWidget {
                                   SizedBox(
                                     height: 8.0.h,
                                   ),
-                                  Text(
+                                  AutoSizeText(
                                     "PIP",
                                     style: TextStyle(
                                       color: darkBlueColor,
@@ -135,7 +136,7 @@ class TreatmentProgramsScreen extends StatelessWidget {
                                   SizedBox(
                                     height: 8.0.h,
                                   ),
-                                  Text(
+                                  AutoSizeText(
                                     "MCP",
                                     style: TextStyle(
                                       color: darkBlueColor,
@@ -174,7 +175,7 @@ class TreatmentProgramsScreen extends StatelessWidget {
                                   SizedBox(
                                     height: 8.0.h,
                                   ),
-                                  Text(
+                                  AutoSizeText(
                                     "Thumb",
                                     style: TextStyle(
                                       color: darkBlueColor,
@@ -213,7 +214,7 @@ class TreatmentProgramsScreen extends StatelessWidget {
                                   SizedBox(
                                     height: 8.0.h,
                                   ),
-                                  Text(
+                                  AutoSizeText(
                                     "Stroke",
                                     style: TextStyle(
                                       color: darkBlueColor,
@@ -262,7 +263,7 @@ class TreatmentProgramsScreen extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              AutoSizeText(
                                 cubit.programDescriptionHead,
                                 style: TextStyle(
                                     color: darkBlueColor,
@@ -277,7 +278,7 @@ class TreatmentProgramsScreen extends StatelessWidget {
                               SizedBox(
                                 height: 8.0.h,
                               ),
-                              Text(
+                              AutoSizeText(
                                 cubit.programDescription,
                                 style: TextStyle(
                                     color: Colors.grey,
@@ -315,7 +316,7 @@ class TreatmentProgramsScreen extends StatelessWidget {
                                                     padding: const EdgeInsets
                                                             .symmetric(
                                                         horizontal: 20),
-                                                    child: Text(
+                                                    child: AutoSizeText(
                                                       "choose Program",
                                                       style: TextStyle(
                                                           fontSize: ScreenUtil()
@@ -365,7 +366,7 @@ class TreatmentProgramsScreen extends StatelessWidget {
                                                                   val;
                                                             });
                                                           }),
-                                                      Text(
+                                                      AutoSizeText(
                                                         "PIP Program",
                                                         style: TextStyle(
                                                             fontSize: ScreenUtil()
@@ -403,7 +404,7 @@ class TreatmentProgramsScreen extends StatelessWidget {
                                                                   val;
                                                             });
                                                           }),
-                                                      Text(
+                                                      AutoSizeText(
                                                         "MCP Program",
                                                         style: TextStyle(
                                                             fontSize: ScreenUtil()
@@ -441,7 +442,7 @@ class TreatmentProgramsScreen extends StatelessWidget {
                                                                   val;
                                                             });
                                                           }),
-                                                      Text(
+                                                      AutoSizeText(
                                                         "Thumb Program",
                                                         style: TextStyle(
                                                             fontSize: ScreenUtil()
@@ -479,7 +480,7 @@ class TreatmentProgramsScreen extends StatelessWidget {
                                                                   val;
                                                             });
                                                           }),
-                                                      Text(
+                                                      AutoSizeText(
                                                         "Stroke Program",
                                                         style: TextStyle(
                                                             fontSize: ScreenUtil()
@@ -631,7 +632,7 @@ class TreatmentProgramsScreen extends StatelessWidget {
                                 left: 30.w,
                                 child: Column(
                                   children: [
-                                    Text(
+                                    AutoSizeText(
                                       "Tutorials",
                                       textAlign: TextAlign.end,
                                       style: TextStyle(
@@ -642,7 +643,7 @@ class TreatmentProgramsScreen extends StatelessWidget {
                                     SizedBox(
                                       height: 4.h,
                                     ),
-                                    Text(
+                                    AutoSizeText(
                                       "Here To help you",
                                       textAlign: TextAlign.end,
                                       style: TextStyle(

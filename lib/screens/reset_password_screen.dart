@@ -7,6 +7,7 @@ import 'package:nureab/cubit/reset_password/reset_password_cubit.dart';
 import 'package:nureab/cubit/reset_password/reset_password_states.dart';
 import 'package:nureab/screens/registration_screen.dart';
 import 'package:nureab/shared/constants.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   var newPasswordController = TextEditingController();
@@ -49,7 +50,7 @@ class ResetPasswordScreen extends StatelessWidget {
                       ),
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 18.0),
-                        child: Text(
+                        child: AutoSizeText(
                           "Reset Your Password",
                           style: TextStyle(
                               color: Colors.white,
@@ -62,7 +63,7 @@ class ResetPasswordScreen extends StatelessWidget {
                       const SizedBox(
                         height: 36.0,
                       ),
-                      Text(
+                      AutoSizeText(
                         "A Link had been Sent To Your Registered Email to reset password",
                         textAlign: TextAlign.center,
                         style: TextStyle(

@@ -10,6 +10,7 @@ import 'package:nureab/screens/reset_password_screen.dart';
 import 'package:nureab/shared/constants.dart';
 
 import 'check_bluetooth.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class LoginScreen extends StatelessWidget {
   var emailController = TextEditingController();
@@ -52,7 +53,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 18.0),
-                        child: Text(
+                        child: AutoSizeText(
                           "Welcome back. Log in to your",
                           style: TextStyle(
                               color: Colors.white,
@@ -69,7 +70,7 @@ class LoginScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
                         children: const [
-                          Text(
+                          AutoSizeText(
                             "nureab account.",
                             style: TextStyle(
                                 color: Colors.white,
@@ -88,7 +89,7 @@ class LoginScreen extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: const [
-                            Text(
+                            AutoSizeText(
                               "Email Address",
                               style: TextStyle(
                                   color: Colors.white,
@@ -152,7 +153,7 @@ class LoginScreen extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: const [
-                            Text(
+                            AutoSizeText(
                               "Password",
                               style: TextStyle(
                                   color: Colors.white,

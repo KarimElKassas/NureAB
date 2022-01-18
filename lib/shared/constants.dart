@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/size_extension.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 Color orangeColor = const Color(0xFFF69323);
 Color greyColor = const Color(0xffEBEEF5);
@@ -38,7 +39,7 @@ Widget defaultTextButton(
       onPressed: () {
         onPressed();
       },
-      child: Text(
+      child: AutoSizeText(
         text,
         style: textStyle ??
             TextStyle(
@@ -66,7 +67,7 @@ Widget defaultOutLinedButton({
 }) =>
     OutlinedButton(
       onPressed: () {},
-      child: Text(
+      child: AutoSizeText(
         isUpperCase ? text.toUpperCase() : text,
         textAlign: TextAlign.center,
         style: textStyle ?? TextStyle(
@@ -102,7 +103,7 @@ Widget defaultButton({
       child: MaterialButton(
         onPressed: function,
         height: 30,
-        child: Text(
+        child: AutoSizeText(
           isUpperCase ? text.toUpperCase() : text,
           textAlign: TextAlign.center,
           style: textStyle ??
@@ -154,7 +155,7 @@ Widget defaultButtonWithIcon({
               flex: 6,
               child: Align(
                 alignment: Alignment.center,
-                child: Text(
+                child: AutoSizeText(
                   isUpperCase ? text.toUpperCase() : text,
                   textAlign: TextAlign.center,
                   style: textStyle ??

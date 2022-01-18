@@ -11,6 +11,7 @@ import 'package:nureab/cubit/personal/personal_settings/personal_settings_states
 import 'package:nureab/cubit/personal/personal_settings_edit/personal_settings_edit_cubit.dart';
 import 'package:nureab/cubit/personal/personal_settings_edit/personal_settings_edit_states.dart';
 import 'package:nureab/shared/constants.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class ChangePasswordScreen extends StatelessWidget {
 
@@ -46,7 +47,7 @@ class ChangePasswordScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Change Password",
+                            AutoSizeText("Change Password",
                               style: TextStyle(
                                   color: darkBlueColor,
                                   fontWeight: FontWeight.w800,
@@ -57,7 +58,7 @@ class ChangePasswordScreen extends StatelessWidget {
                             SizedBox(height: 36.0.h,),
                             Padding(
                               padding: EdgeInsets.only(left: 4.0.w),
-                              child: Text(
+                              child: AutoSizeText(
                                 "New Password",
                                 style: TextStyle(
                                     color: darkBlueColor,
@@ -113,7 +114,7 @@ class ChangePasswordScreen extends StatelessWidget {
                             SizedBox(height: 24.0.h,),
                             Padding(
                               padding: EdgeInsets.only(left: 4.0.w),
-                              child: Text(
+                              child: AutoSizeText(
                                 "Confirm New Password",
                                 style: TextStyle(
                                     color: darkBlueColor,
@@ -169,7 +170,7 @@ class ChangePasswordScreen extends StatelessWidget {
                             SizedBox(height: 24.0.h,),
                             Padding(
                               padding: EdgeInsets.only(left: 4.0.w),
-                              child: Text(
+                              child: AutoSizeText(
                                 "A Link will be been Sent To Your Registered Email to Confirm changed password.",
                                 style: TextStyle(
                                     color: darkBlueColor,

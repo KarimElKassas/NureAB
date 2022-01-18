@@ -8,6 +8,7 @@ import 'package:nureab/cubit/bluetooth/bluetooth_cubit.dart';
 import 'package:nureab/cubit/bluetooth/bluetooth_states.dart';
 import 'package:nureab/screens/bottomNavigation.dart';
 import 'package:nureab/shared/constants.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class CheckBluetooth extends StatelessWidget {
   const CheckBluetooth({Key key}) : super(key: key);
@@ -57,7 +58,7 @@ class CheckBluetooth extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 16, top: 20),
                     child: Align(
                         alignment: Alignment.topLeft,
-                        child: Text(
+                        child: AutoSizeText(
                           'Activate Bluetooth',
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
@@ -70,7 +71,7 @@ class CheckBluetooth extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 16, top: 8, right: 16),
                     child: Align(
                         alignment: Alignment.topLeft,
-                        child: Text(
+                        child: AutoSizeText(
                           'To connect to your nureab device you need to activate the device bluetooth & connect it to your phone bluetooth.',
                           style: TextStyle(
                               fontWeight: FontWeight.w300,

@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/size_extension.dart';
 import 'package:nureab/cubit/personal/personal_settings_edit/personal_settings_edit_cubit.dart';
 import 'package:nureab/cubit/personal/personal_settings_edit/personal_settings_edit_states.dart';
 import 'package:nureab/shared/constants.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class PersonalSettingsEditScreen extends StatelessWidget {
 
@@ -43,7 +44,7 @@ class PersonalSettingsEditScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Personal Settings",
+                            AutoSizeText("Personal Settings",
                               style: TextStyle(
                                   color: darkBlueColor,
                                   fontWeight: FontWeight.w800,
@@ -54,7 +55,7 @@ class PersonalSettingsEditScreen extends StatelessWidget {
                             SizedBox(height: 36.0.h,),
                             Padding(
                               padding: EdgeInsets.only(left: 4.0.w),
-                              child: Text(
+                              child: AutoSizeText(
                                 "Your Name",
                                 style: TextStyle(
                                     color: darkBlueColor,
@@ -110,7 +111,7 @@ class PersonalSettingsEditScreen extends StatelessWidget {
                             SizedBox(height: 24.0.h,),
                             Padding(
                               padding: EdgeInsets.only(left: 4.0.w),
-                              child: Text(
+                              child: AutoSizeText(
                                 "Email Address",
                                 style: TextStyle(
                                     color: darkBlueColor,
@@ -166,7 +167,7 @@ class PersonalSettingsEditScreen extends StatelessWidget {
                             SizedBox(height: 24.0.h,),
                             Padding(
                               padding: EdgeInsets.only(left: 4.0.w),
-                              child: Text(
+                              child: AutoSizeText(
                                 "Phone",
                                 style: TextStyle(
                                     color: darkBlueColor,
@@ -222,7 +223,7 @@ class PersonalSettingsEditScreen extends StatelessWidget {
                             SizedBox(height: 24.0.h,),
                             Padding(
                               padding: EdgeInsets.only(left: 4.0.w),
-                              child: Text(
+                              child: AutoSizeText(
                                 "Hospital / Clinic Name",
                                 style: TextStyle(
                                     color: darkBlueColor,

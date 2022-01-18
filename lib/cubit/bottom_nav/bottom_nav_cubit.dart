@@ -18,19 +18,19 @@ class BottomNavCubit extends Cubit<BottomNavStates> {
   List<BottomNavigationBarItem> bottomNavigationItems = [
     const BottomNavigationBarItem(
       icon: Icon(
-        IconlyBroken.home,
+        Icons.home_outlined,
       ),
       label: "Home",
     ),
     const BottomNavigationBarItem(
       icon: Icon(
-        IconlyBroken.user2,
+        Icons.people_outline,
       ),
       label: "Patient's List",
     ),
     const BottomNavigationBarItem(
       icon: Icon(
-        IconlyBroken.setting,
+        Icons.settings_outlined,
       ),
       label: "Settings",
     ),

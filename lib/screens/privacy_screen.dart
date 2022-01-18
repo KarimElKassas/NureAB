@@ -7,6 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:nureab/cubit/privacy/privacy_cubit.dart';
 import 'package:nureab/cubit/privacy/privacy_states.dart';
 import 'package:nureab/shared/constants.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class PrivacyScreen extends StatelessWidget {
 
@@ -54,7 +55,7 @@ class PrivacyScreen extends StatelessWidget {
                                         color: darkBlueColor,
                                       ),
                                     ),
-                                    Text(
+                                    AutoSizeText(
                                       "Back",
                                       style: TextStyle(
                                           color: darkBlueColor,
@@ -78,7 +79,7 @@ class PrivacyScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Privacy",
+                            AutoSizeText("Privacy",
                               style: TextStyle(
                                   color: darkBlueColor,
                                   fontWeight: FontWeight.w800,
@@ -87,7 +88,7 @@ class PrivacyScreen extends StatelessWidget {
                               ),
                             ),
                             SizedBox(height: 24.0.h,),
-                            Text(
+                            AutoSizeText(
                               "Personal Information",
                               style: TextStyle(
                                   color: darkBlueColor,
@@ -99,7 +100,7 @@ class PrivacyScreen extends StatelessWidget {
                               maxLines: 5,
                             ),
                             SizedBox(height: 4.0.h,),
-                            Text(
+                            AutoSizeText(
                               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a laoreet enim, venenatis dapibus sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a laoreet enim, venenatis dapibus sem. ",
                               style: TextStyle(
                                   color: Colors.grey,
@@ -113,7 +114,7 @@ class PrivacyScreen extends StatelessWidget {
                             SizedBox(height: 24.0.h,),
                             Divider(height: 1.0.h,color: Colors.grey,),
                             SizedBox(height: 24.0.h,),
-                            Text(
+                            AutoSizeText(
                               "Patient’s Information",
                               style: TextStyle(
                                   color: darkBlueColor,
@@ -125,7 +126,7 @@ class PrivacyScreen extends StatelessWidget {
                               maxLines: 5,
                             ),
                             SizedBox(height: 4.0.h,),
-                            Text(
+                            AutoSizeText(
                               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a laoreet enim, venenatis dapibus sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a laoreet enim, venenatis dapibus sem. ",
                               style: TextStyle(
                                   color: Colors.grey,

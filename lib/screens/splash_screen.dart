@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nureab/cubit/splashScreen/splash_screen_cubit.dart';
 import 'package:nureab/cubit/splashScreen/splash_screen_states.dart';
 import 'package:nureab/shared/constants.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key key}) : super(key: key);
@@ -42,7 +43,7 @@ class SplashScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
-                        Text("Back To Independent Life",
+                        AutoSizeText("Back To Independent Life",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 20.0

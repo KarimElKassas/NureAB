@@ -67,7 +67,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                                 cubit.navigate(context, NotificationsScreen());
                               },
                               child: Icon(
-                                IconlyBold.notification,
+                                Icons.notifications,
                                 color: darkBlueColor,
                                 size: 35,
                               ),

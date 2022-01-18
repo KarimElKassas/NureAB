@@ -7,6 +7,7 @@ import 'package:nureab/cubit/wear_device/wear_device_cubit.dart';
 import 'package:nureab/cubit/wear_device/wear_device_states.dart';
 import 'package:nureab/shared/constants.dart';
 import 'package:nureab/shared/widgets/rectangle_number.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 import '../../bottomNavigation.dart';
 
@@ -56,7 +57,7 @@ class _WearDeviceState extends State<WearDevice> {
                     padding: const EdgeInsets.only(left: 16, top: 20),
                     child: Align(
                         alignment: Alignment.topLeft,
-                        child: Text(
+                        child: AutoSizeText(
                           'Adjust Device Wearing settings ',
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
@@ -69,7 +70,7 @@ class _WearDeviceState extends State<WearDevice> {
                     padding: const EdgeInsets.only(left: 16, top: 8, right: 16),
                     child: Align(
                         alignment: Alignment.topLeft,
-                        child: Text(
+                        child: AutoSizeText(
                           'Enter Patient’s current Hand angel to adjust the thedevice to be wearable.',
                           style: TextStyle(
                               fontWeight: FontWeight.w300,
@@ -83,7 +84,7 @@ class _WearDeviceState extends State<WearDevice> {
                         const EdgeInsets.only(left: 16, top: 40, right: 16),
                     child: Align(
                         alignment: Alignment.topLeft,
-                        child: Text(
+                        child: AutoSizeText(
                           'PIP Angle',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -131,7 +132,7 @@ class _WearDeviceState extends State<WearDevice> {
                     padding: const EdgeInsets.only(left: 16, right: 16),
                     child: Align(
                         alignment: Alignment.topLeft,
-                        child: Text(
+                        child: AutoSizeText(
                           'MCP Angle',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -179,7 +180,7 @@ class _WearDeviceState extends State<WearDevice> {
                     padding: const EdgeInsets.only(left: 16, right: 16),
                     child: Align(
                         alignment: Alignment.topLeft,
-                        child: Text(
+                        child: AutoSizeText(
                           'Thumb Angle',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -256,7 +257,7 @@ class _WearDeviceState extends State<WearDevice> {
                                     Padding(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 20),
-                                        child: Text(
+                                        child: AutoSizeText(
                                           "Your Patient Can now Wear\nthe Device",
                                           style: TextStyle(
                                               fontSize: ScreenUtil().setSp(18,

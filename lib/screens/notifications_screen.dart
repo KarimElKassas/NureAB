@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/size_extension.dart';
 import 'package:nureab/cubit/notifications/notifications_cubit.dart';
 import 'package:nureab/cubit/notifications/notifications_states.dart';
 import 'package:nureab/shared/constants.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class NotificationsScreen extends StatelessWidget {
   @override
@@ -52,7 +53,7 @@ class NotificationsScreen extends StatelessWidget {
                                         color: darkBlueColor,
                                       ),
                                     ),
-                                    Text(
+                                    AutoSizeText(
                                       "Back",
                                       style: TextStyle(
                                           color: darkBlueColor,
@@ -77,7 +78,7 @@ class NotificationsScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            AutoSizeText(
                               "Notifications",
                               style: TextStyle(
                                   color: darkBlueColor,
@@ -91,7 +92,7 @@ class NotificationsScreen extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                Text(
+                                AutoSizeText(
                                   "NEW COLLECTION",
                                   style: TextStyle(
                                       color: darkBlueColor,
@@ -105,7 +106,7 @@ class NotificationsScreen extends StatelessWidget {
                                 Spacer(),
                                 Padding(
                                   padding: const EdgeInsets.only(right: 4.0),
-                                  child: Text(
+                                  child: AutoSizeText(
                                     "01:00 PM",
                                     style: TextStyle(
                                         color: Colors.grey,
@@ -119,7 +120,7 @@ class NotificationsScreen extends StatelessWidget {
                             SizedBox(
                               height: 4.0.h,
                             ),
-                            Text(
+                            AutoSizeText(
                               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a laoreet enim, venenatis dapibus sem. ",
                               style: TextStyle(
                                   color: Colors.grey,
@@ -142,7 +143,7 @@ class NotificationsScreen extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                Text(
+                                AutoSizeText(
                                   "NEW COLLECTION",
                                   style: TextStyle(
                                       color: darkBlueColor,
@@ -154,7 +155,7 @@ class NotificationsScreen extends StatelessWidget {
                                   maxLines: 5,
                                 ),
                                 Spacer(),
-                                Text(
+                                AutoSizeText(
                                   "01:00 PM",
                                   style: TextStyle(
                                       color: Colors.grey,
@@ -167,7 +168,7 @@ class NotificationsScreen extends StatelessWidget {
                             SizedBox(
                               height: 4.0.h,
                             ),
-                            Text(
+                            AutoSizeText(
                               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a laoreet enim, venenatis dapibus sem. ",
                               style: TextStyle(
                                   color: Colors.grey,
@@ -190,7 +191,7 @@ class NotificationsScreen extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                Text(
+                                AutoSizeText(
                                   "NEW COLLECTION",
                                   style: TextStyle(
                                       color: darkBlueColor,
@@ -202,7 +203,7 @@ class NotificationsScreen extends StatelessWidget {
                                   maxLines: 5,
                                 ),
                                 Spacer(),
-                                Text(
+                                AutoSizeText(
                                   "01:00 PM",
                                   style: TextStyle(
                                       color: Colors.grey,
@@ -215,7 +216,7 @@ class NotificationsScreen extends StatelessWidget {
                             SizedBox(
                               height: 4.0.h,
                             ),
-                            Text(
+                            AutoSizeText(
                               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a laoreet enim, venenatis dapibus sem. ",
                               style: TextStyle(
                                   color: Colors.grey,
@@ -238,7 +239,7 @@ class NotificationsScreen extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                Text(
+                                AutoSizeText(
                                   "NEW COLLECTION",
                                   style: TextStyle(
                                       color: darkBlueColor,
@@ -250,7 +251,7 @@ class NotificationsScreen extends StatelessWidget {
                                   maxLines: 5,
                                 ),
                                 Spacer(),
-                                Text(
+                                AutoSizeText(
                                   "01:00 PM",
                                   style: TextStyle(
                                       color: Colors.grey,
@@ -263,7 +264,7 @@ class NotificationsScreen extends StatelessWidget {
                             SizedBox(
                               height: 4.0.h,
                             ),
-                            Text(
+                            AutoSizeText(
                               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a laoreet enim, venenatis dapibus sem. ",
                               style: TextStyle(
                                   color: Colors.grey,
@@ -286,7 +287,7 @@ class NotificationsScreen extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                Text(
+                                AutoSizeText(
                                   "NEW COLLECTION",
                                   style: TextStyle(
                                       color: darkBlueColor,
@@ -298,7 +299,7 @@ class NotificationsScreen extends StatelessWidget {
                                   maxLines: 5,
                                 ),
                                 Spacer(),
-                                Text(
+                                AutoSizeText(
                                   "01:00 PM",
                                   style: TextStyle(
                                       color: Colors.grey,
@@ -311,7 +312,7 @@ class NotificationsScreen extends StatelessWidget {
                             SizedBox(
                               height: 4.0.h,
                             ),
-                            Text(
+                            AutoSizeText(
                               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a laoreet enim, venenatis dapibus sem. ",
                               style: TextStyle(
                                   color: Colors.grey,
@@ -334,7 +335,7 @@ class NotificationsScreen extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                Text(
+                                AutoSizeText(
                                   "NEW COLLECTION",
                                   style: TextStyle(
                                       color: darkBlueColor,
@@ -346,7 +347,7 @@ class NotificationsScreen extends StatelessWidget {
                                   maxLines: 5,
                                 ),
                                 Spacer(),
-                                Text(
+                                AutoSizeText(
                                   "01:00 PM",
                                   style: TextStyle(
                                       color: Colors.grey,
@@ -359,7 +360,7 @@ class NotificationsScreen extends StatelessWidget {
                             SizedBox(
                               height: 4.0.h,
                             ),
-                            Text(
+                            AutoSizeText(
                               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a laoreet enim, venenatis dapibus sem. ",
                               style: TextStyle(
                                   color: Colors.grey,
@@ -382,7 +383,7 @@ class NotificationsScreen extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                Text(
+                                AutoSizeText(
                                   "NEW COLLECTION",
                                   style: TextStyle(
                                       color: darkBlueColor,
@@ -394,7 +395,7 @@ class NotificationsScreen extends StatelessWidget {
                                   maxLines: 5,
                                 ),
                                 Spacer(),
-                                Text(
+                                AutoSizeText(
                                   "01:00 PM",
                                   style: TextStyle(
                                       color: Colors.grey,
@@ -407,7 +408,7 @@ class NotificationsScreen extends StatelessWidget {
                             SizedBox(
                               height: 4.0.h,
                             ),
-                            Text(
+                            AutoSizeText(
                               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a laoreet enim, venenatis dapibus sem. ",
                               style: TextStyle(
                                   color: Colors.grey,
@@ -430,7 +431,7 @@ class NotificationsScreen extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                Text(
+                                AutoSizeText(
                                   "NEW COLLECTION",
                                   style: TextStyle(
                                       color: darkBlueColor,
@@ -442,7 +443,7 @@ class NotificationsScreen extends StatelessWidget {
                                   maxLines: 5,
                                 ),
                                 Spacer(),
-                                Text(
+                                AutoSizeText(
                                   "01:00 PM",
                                   style: TextStyle(
                                       color: Colors.grey,
@@ -455,7 +456,7 @@ class NotificationsScreen extends StatelessWidget {
                             SizedBox(
                               height: 4.0.h,
                             ),
-                            Text(
+                            AutoSizeText(
                               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a laoreet enim, venenatis dapibus sem. ",
                               style: TextStyle(
                                   color: Colors.grey,
@@ -478,7 +479,7 @@ class NotificationsScreen extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                Text(
+                                AutoSizeText(
                                   "NEW COLLECTION",
                                   style: TextStyle(
                                       color: darkBlueColor,
@@ -490,7 +491,7 @@ class NotificationsScreen extends StatelessWidget {
                                   maxLines: 5,
                                 ),
                                 Spacer(),
-                                Text(
+                                AutoSizeText(
                                   "01:00 PM",
                                   style: TextStyle(
                                       color: Colors.grey,
@@ -503,7 +504,7 @@ class NotificationsScreen extends StatelessWidget {
                             SizedBox(
                               height: 4.0.h,
                             ),
-                            Text(
+                            AutoSizeText(
                               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a laoreet enim, venenatis dapibus sem. ",
                               style: TextStyle(
                                   color: Colors.grey,

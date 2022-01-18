@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nureab/model/drop_list_model.dart';
 import 'package:nureab/shared/constants.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class SelectDropList extends StatefulWidget {
   final OptionItem itemSelected;
@@ -87,23 +88,23 @@ class _SelectDropListState extends State<SelectDropList>
                 width: 10,
               ),
               Expanded(
-                  child: GestureDetector(
+                  child: AutoSizeText(
+                    optionItemSelected.title,
+                    style:  TextStyle(color: darkBlueColor, fontSize: ScreenUtil().setSp(16,allowFontScalingSelf: true)),
+                  )),
+              GestureDetector(
                 onTap: () {
                   isShow = !isShow;
                   _runExpandCheck();
                   setState(() {});
                 },
-                child: Text(
-                  optionItemSelected.title,
-                  style:  TextStyle(color: darkBlueColor, fontSize: ScreenUtil().setSp(16,allowFontScalingSelf: true)),
-                ),
-              )),
-              Align(
-                alignment: const Alignment(1, 0),
-                child: Icon(
-                  isShow ? Icons.arrow_drop_down : Icons.arrow_right,
-                  color:  darkBlueColor,
-                  size: 15,
+                child: Align(
+                  alignment: const Alignment(1, 0),
+                  child: Icon(
+                    isShow ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
+                    color:  darkBlueColor,
+                    size: 30,
+                  ),
                 ),
               ),
             ],
@@ -155,7 +156,7 @@ class _SelectDropListState extends State<SelectDropList>
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(right: 12.0),
-                  child: Text(item.title,
+                  child: AutoSizeText(item.title,
                       style:  TextStyle(
                           color: darkBlueColor,
                           fontWeight: FontWeight.w700,

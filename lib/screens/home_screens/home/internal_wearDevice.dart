@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -64,7 +65,7 @@ class _InternalWearDeviceState extends State<InternalWearDevice> {
                               Padding(
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 16.w),
-                                child: Text(
+                                child: AutoSizeText(
                                   "Adjust Device Wearing settings ",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
@@ -82,7 +83,7 @@ class _InternalWearDeviceState extends State<InternalWearDevice> {
                               Padding(
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 16.w),
-                                child: Text(
+                                child: AutoSizeText(
                                   "Enter Patient’s current Hand angel to adjust the thedevice to be wearable.",
                                   style: TextStyle(
                                     fontSize: ScreenUtil().setSp(13,
@@ -114,7 +115,7 @@ class _InternalWearDeviceState extends State<InternalWearDevice> {
                         const EdgeInsets.only(left: 16, top: 16, right: 16),
                     child: Align(
                         alignment: Alignment.topLeft,
-                        child: Text(
+                        child: AutoSizeText(
                           'PIP Angle',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -162,7 +163,7 @@ class _InternalWearDeviceState extends State<InternalWearDevice> {
                     padding: const EdgeInsets.only(left: 16, right: 16),
                     child: Align(
                         alignment: Alignment.topLeft,
-                        child: Text(
+                        child: AutoSizeText(
                           'MCP Angle',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -210,7 +211,7 @@ class _InternalWearDeviceState extends State<InternalWearDevice> {
                     padding: const EdgeInsets.only(left: 16, right: 16),
                     child: Align(
                         alignment: Alignment.topLeft,
-                        child: Text(
+                        child: AutoSizeText(
                           'Thumb Angle',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -287,7 +288,7 @@ class _InternalWearDeviceState extends State<InternalWearDevice> {
                                     Padding(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 20),
-                                        child: Text(
+                                        child: AutoSizeText(
                                           "Your Patient Can now Wear\nthe Device",
                                           style: TextStyle(
                                               fontSize: ScreenUtil().setSp(18,

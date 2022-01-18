@@ -10,6 +10,7 @@ import 'package:nureab/cubit/registration/registration_states.dart';
 import 'package:nureab/screens/credit_card_screen.dart';
 import 'package:nureab/screens/login_screen.dart';
 import 'package:nureab/shared/constants.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class RegistrationScreen extends StatelessWidget {
   var nameController = TextEditingController();
@@ -56,7 +57,7 @@ class RegistrationScreen extends StatelessWidget {
                       ),
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 18.0),
-                        child: Text(
+                        child: AutoSizeText(
                           "Create your nureab account",
                           style: TextStyle(
                               color: Colors.white,

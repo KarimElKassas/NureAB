@@ -8,6 +8,7 @@ import 'package:nureab/cubit/patient_list/patient_list_states.dart';
 import 'package:nureab/shared/constants.dart';
 
 import 'home/patientListDetails.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class PatientScreen extends StatelessWidget {
   const PatientScreen({Key key}) : super(key: key);
@@ -77,7 +78,7 @@ class PatientScreen extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 16),
-                      child: SvgPicture.asset('assets/images/Filter.svg'),
+                      child: SvgPicture.asset('assets/images/Filter.svg',height: 60.h,),
                     )
                   ],
                 ),
@@ -150,14 +151,14 @@ class PatientScreen extends StatelessWidget {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text(
+                                      AutoSizeText(
                                         cubit.patientList[index].name,
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: Colors.indigo,
                                             fontSize: 16),
                                       ),
-                                      Text(cubit.patientList[index].date,
+                                      AutoSizeText(cubit.patientList[index].date,
                                           style: TextStyle(
                                               color: Colors.indigo, fontSize: 16))
                                     ],
@@ -178,7 +179,7 @@ class PatientScreen extends StatelessWidget {
                                     SizedBox(
                                       width: 16.w,
                                     ),
-                                    Text(cubit.patientList[index].age.toString(),
+                                    AutoSizeText(cubit.patientList[index].age.toString(),
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: Colors.indigo,

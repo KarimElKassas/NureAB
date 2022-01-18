@@ -13,6 +13,7 @@ import 'package:nureab/cubit/personal/personal_settings_edit/personal_settings_e
 import 'package:nureab/cubit/share_feed_back/share_feed_back_cubit.dart';
 import 'package:nureab/cubit/share_feed_back/share_feed_back_states.dart';
 import 'package:nureab/shared/constants.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class ShareFeedBackScreen extends StatelessWidget {
 
@@ -64,7 +65,7 @@ class ShareFeedBackScreen extends StatelessWidget {
                                         color: darkBlueColor,
                                       ),
                                     ),
-                                    Text(
+                                    AutoSizeText(
                                       "Back",
                                       style: TextStyle(
                                           color: darkBlueColor,
@@ -88,7 +89,7 @@ class ShareFeedBackScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Share Feedback",
+                            AutoSizeText("Share Feedback",
                               style: TextStyle(
                                   color: darkBlueColor,
                                   fontWeight: FontWeight.w800,
@@ -99,7 +100,7 @@ class ShareFeedBackScreen extends StatelessWidget {
                             SizedBox(height: 36.0.h,),
                             Padding(
                               padding: EdgeInsets.only(left: 4.0.w),
-                              child: Text(
+                              child: AutoSizeText(
                                 "Email Address",
                                 style: TextStyle(
                                     color: darkBlueColor,
@@ -155,7 +156,7 @@ class ShareFeedBackScreen extends StatelessWidget {
                             SizedBox(height: 24.0.h,),
                             Padding(
                               padding: EdgeInsets.only(left: 4.0.w),
-                              child: Text(
+                              child: AutoSizeText(
                                 "Add your Recommendations",
                                 style: TextStyle(
                                     color: darkBlueColor,

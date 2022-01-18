@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';import 'package:auto_size_text/auto_size_text.dart';
+
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nureab/cubit/add_patient/add_patient_cubit.dart';
@@ -76,7 +77,7 @@ class _TreatNewPatientScreenState extends State<TreatNewPatientScreen> {
                                   ),
                                 ),
                                 Container(
-                                  width: MediaQuery.of(context).size.width - 70,
+                                  width: MediaQuery.of(context).size.width - 80,
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -84,7 +85,7 @@ class _TreatNewPatientScreenState extends State<TreatNewPatientScreen> {
                                       Padding(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 16.w),
-                                        child: Text(
+                                        child: AutoSizeText(
                                           "New Patient Infromations",
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
@@ -102,7 +103,7 @@ class _TreatNewPatientScreenState extends State<TreatNewPatientScreen> {
                                       Padding(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 16.w),
-                                        child: Text(
+                                        child: AutoSizeText(
                                           "To Start a Program You Need To Create a Patient.",
                                           style: TextStyle(
                                             fontSize: ScreenUtil().setSp(14,
@@ -285,7 +286,7 @@ class _TreatNewPatientScreenState extends State<TreatNewPatientScreen> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(top: 8.h, left: 26.w),
+                            padding: EdgeInsets.only(top: 20.h, left: 26.w),
                             child: RichText(
                               text: TextSpan(
                                 style: TextStyle(
@@ -317,9 +318,7 @@ class _TreatNewPatientScreenState extends State<TreatNewPatientScreen> {
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height: 12.0.h,
-                          ),
+
                           Padding(
                             padding: EdgeInsets.only(
                                 left: 20.w, right: 20.w, top: 12.h),

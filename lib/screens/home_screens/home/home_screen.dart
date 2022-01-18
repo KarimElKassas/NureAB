@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         padding: EdgeInsets.all(10),
                         child: Center(
-                          child: Text(
+                          child: AutoSizeText(
                             'Treat New Patient',
                             style: TextStyle(
                                 color: Colors.white,
@@ -92,7 +93,7 @@ class HomeScreen extends StatelessWidget {
                           left: 40.w,
                           child: Column(
                             children: [
-                              Text(
+                              AutoSizeText(
                                 cubit.homeItems[index].title,
                                 textAlign: TextAlign.end,
                                 style: TextStyle(
@@ -103,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                               SizedBox(
                                 height: 4.h,
                               ),
-                              Text(
+                              AutoSizeText(
                                 cubit.homeItems[index].subTitle,
                                 textAlign: TextAlign.end,
                                 style: TextStyle(

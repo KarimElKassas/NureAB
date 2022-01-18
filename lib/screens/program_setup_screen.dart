@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,6 +9,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:nureab/cubit/setup_program/setup_program_cubit.dart';
 import 'package:nureab/cubit/setup_program/setup_program_states.dart';
 import 'package:nureab/screens/bottomNavigation.dart';
+import 'package:nureab/screens/startProgram_screen.dart';
 import 'package:nureab/shared/constants.dart';
 import 'package:nureab/shared/widgets/back_bar.dart';
 import 'package:nureab/shared/widgets/rectangle_number.dart';
@@ -96,7 +98,7 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                   ),
                                 ),
                                 Container(
-                                  width: MediaQuery.of(context).size.width - 70,
+                                  width: MediaQuery.of(context).size.width - 80,
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -104,7 +106,7 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                       Padding(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 16.w),
-                                        child: Text(
+                                        child: AutoSizeText(
                                           "Program Setup",
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
@@ -122,7 +124,7 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                       Padding(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 16.w),
-                                        child: Text(
+                                        child: AutoSizeText(
                                           "Specify how you want the program to work.",
                                           style: TextStyle(
                                             fontSize: ScreenUtil().setSp(14,
@@ -154,7 +156,7 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                           ),
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 16.w),
-                            child: Text(
+                            child: AutoSizeText(
                               "Current Program :",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -198,7 +200,7 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                             children: [
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 16.w),
-                                child: Text(
+                                child: AutoSizeText(
                                   "Program Duration",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
@@ -215,7 +217,7 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                               ),
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 16.w),
-                                child: Text(
+                                child: AutoSizeText(
                                   "How Much the program will last",
                                   style: TextStyle(
                                     fontSize: ScreenUtil()
@@ -377,7 +379,7 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                             children: [
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 16.w),
-                                child: Text(
+                                child: AutoSizeText(
                                   "Program Repetition",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
@@ -394,7 +396,7 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                               ),
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 16.w),
-                                child: Text(
+                                child: AutoSizeText(
                                   "How many the program will repeat",
                                   style: TextStyle(
                                     fontSize: ScreenUtil()
@@ -558,7 +560,7 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                             children: [
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 16.w),
-                                child: Text(
+                                child: AutoSizeText(
                                   "Vibration",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
@@ -667,7 +669,7 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                     Padding(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 16.w),
-                                      child: Text(
+                                      child: AutoSizeText(
                                         "Grip Size",
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
@@ -775,7 +777,7 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
+                                    AutoSizeText(
                                       "Program Angle",
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
@@ -789,7 +791,7 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                     SizedBox(
                                       height: 4.0.h,
                                     ),
-                                    Text(
+                                    AutoSizeText(
                                       "Adjust device angle ",
                                       style: TextStyle(
                                         fontSize: ScreenUtil().setSp(16,
@@ -849,14 +851,20 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                   children: [
                                     defaultButton(
                                       function: () {
-                                        showToast(
+
+                                        navigateTo(context, StartProgram());
+
+
+
+
+                                /*        showToast(
                                           message: "Okay",
                                           length: Toast.LENGTH_SHORT,
                                           gravity: ToastGravity.BOTTOM,
                                           timeInSecForIosWeb: 3,
                                           backgroundColor: darkBlueColor,
                                           textColor: Colors.white,
-                                        );
+                                        );*/
                                       },
                                       text: "Start",
                                       textStyle: TextStyle(

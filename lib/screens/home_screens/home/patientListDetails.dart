@@ -1,6 +1,7 @@
 import 'package:buildcondition/buildcondition.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';import 'package:auto_size_text/auto_size_text.dart';
+
 import 'package:flutter/painting.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -66,7 +67,7 @@ class _PatientListDetailsState extends State<PatientListDetails> {
                                       isUpperCase: false,
                                       textStyle: TextStyle(
                                           fontWeight: FontWeight.w800,
-                                          fontSize: ScreenUtil().setSp(16,
+                                          fontSize: ScreenUtil().setSp(14,
                                               allowFontScalingSelf: true),
                                           color: Colors.white),
                                     ),
@@ -77,7 +78,7 @@ class _PatientListDetailsState extends State<PatientListDetails> {
                               Padding(
                                 padding:
                                     EdgeInsets.only(top: 18.0.h, left: 18.0.w),
-                                child: Text(
+                                child: AutoSizeText(
                                   'Patient’s Information',
                                   style: TextStyle(
                                       color: darkBlueColor,
@@ -107,7 +108,7 @@ class _PatientListDetailsState extends State<PatientListDetails> {
                                                   MainAxisAlignment
                                                       .spaceBetween,
                                               children: [
-                                                Text(
+                                                AutoSizeText(
                                                   'Karim Mahdi',
                                                   style: TextStyle(
                                                       fontWeight:
@@ -118,7 +119,7 @@ class _PatientListDetailsState extends State<PatientListDetails> {
                                                           allowFontScalingSelf:
                                                               true)),
                                                 ),
-                                                Text('Started:2/4/2021',
+                                                AutoSizeText('Started:2/4/2021',
                                                     style: TextStyle(
                                                         color: Colors.white,
                                                         fontSize: ScreenUtil()
@@ -141,7 +142,7 @@ class _PatientListDetailsState extends State<PatientListDetails> {
                                                 SizedBox(
                                                   width: 16.w,
                                                 ),
-                                                Text('42',
+                                                AutoSizeText('42',
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold,
@@ -151,7 +152,7 @@ class _PatientListDetailsState extends State<PatientListDetails> {
                                                                 allowFontScalingSelf:
                                                                     true))),
                                                 Expanded(child: Container()),
-                                                Text('3 Sessions',
+                                                AutoSizeText('3 Sessions',
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold,
@@ -195,7 +196,7 @@ class _PatientListDetailsState extends State<PatientListDetails> {
                                           textStyle: TextStyle(
                                             color: darkBlueColor,
                                             fontWeight: FontWeight.bold,
-                                            fontSize: ScreenUtil().setSp(14,
+                                            fontSize: ScreenUtil().setSp(12,
                                                 allowFontScalingSelf: true),
                                           ),
                                           icon: FontAwesomeIcons.solidHandPaper,
@@ -225,7 +226,7 @@ class _PatientListDetailsState extends State<PatientListDetails> {
                                           textStyle: TextStyle(
                                             color: darkBlueColor,
                                             fontWeight: FontWeight.bold,
-                                            fontSize: ScreenUtil().setSp(14,
+                                            fontSize: ScreenUtil().setSp(12,
                                                 allowFontScalingSelf: true),
                                           ),
                                           icon: Icons.assessment_outlined,
@@ -298,7 +299,7 @@ class _PatientListDetailsState extends State<PatientListDetails> {
                                                           MainAxisAlignment
                                                               .spaceBetween,
                                                       children: [
-                                                        Text(
+                                                        AutoSizeText(
                                                           'Done 6/4/2021',
                                                           style: TextStyle(
                                                               fontWeight:
@@ -311,7 +312,7 @@ class _PatientListDetailsState extends State<PatientListDetails> {
                                                                       allowFontScalingSelf:
                                                                           true)),
                                                         ),
-                                                        Text('PIP Program',
+                                                        AutoSizeText('PIP Program',
                                                             style: TextStyle(
                                                                 color:
                                                                     darkBlueColor,
@@ -434,7 +435,7 @@ class _PatientListDetailsState extends State<PatientListDetails> {
                                                           ],
                                                         ),
                                                       ),
-                                                      Text(
+                                                      AutoSizeText(
                                                         'With vibration',
                                                         style: TextStyle(
                                                             color:
@@ -539,7 +540,7 @@ class _PatientListDetailsState extends State<PatientListDetails> {
                                                           ],
                                                         ),
                                                       ),
-                                                      Text(
+                                                      AutoSizeText(
                                                         "Start Program",
                                                         style: TextStyle(
                                                             color: Color(

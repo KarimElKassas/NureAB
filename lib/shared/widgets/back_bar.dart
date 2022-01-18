@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../constants.dart';
+import '../constants.dart';import 'package:auto_size_text/auto_size_text.dart';
+
 class BackBar extends StatelessWidget {
 final Widget destination;
 BackBar({this.destination});
@@ -33,7 +34,7 @@ BackBar({this.destination});
               SizedBox(
                 width: 16.w,
               ),
-              Text(
+              AutoSizeText(
                 'Back',
                 style: TextStyle(
                     fontWeight: FontWeight.bold, fontSize: 18),

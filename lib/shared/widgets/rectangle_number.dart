@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 import '../constants.dart';
 
@@ -16,7 +17,7 @@ class RectangleNumber extends StatelessWidget {
           color: greyFiveColor,
           borderRadius: BorderRadius.circular(10)),
       child: Center(
-        child: Text(num,
+        child: AutoSizeText(num,
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: darkBlueColor,

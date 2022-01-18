@@ -4,6 +4,7 @@ import 'package:nureab/screens/home_screens/home/tutorials_screen.dart';
 import 'package:nureab/shared/constants.dart';
 import 'package:nureab/shared/widgets/back_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class TutorialDetailsScreen extends StatelessWidget {
   const TutorialDetailsScreen({Key key}) : super(key: key);
@@ -20,7 +21,7 @@ class TutorialDetailsScreen extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 24, left: 16),
-            child: Text(
+            child: AutoSizeText(
               'Treat New patient Tutorial',
               style: TextStyle(
                   fontWeight: FontWeight.w700,
@@ -51,7 +52,7 @@ class TutorialDetailsScreen extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8, left: 16),
-            child: Text(
+            child: AutoSizeText(
               'Feature Description',
               style: TextStyle(
                   fontWeight: FontWeight.w700,
@@ -61,7 +62,7 @@ class TutorialDetailsScreen extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8, left: 16, right: 16),
-            child: Text(
+            child: AutoSizeText(
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula, arcu interdum ornare lobortis, velit ipsum aliquet sapien, non mattis nulla sem nec felis. Donec a aiculis metus.',
               style: TextStyle(
                 fontWeight: FontWeight.w300,
