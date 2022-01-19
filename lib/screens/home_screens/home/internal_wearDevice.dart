@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nureab/cubit/wear_device/wear_device_cubit.dart';
 import 'package:nureab/cubit/wear_device/wear_device_states.dart';
+import 'package:nureab/screens/home_screens/home/treatNewPatient_screen.dart';
 import 'package:nureab/shared/constants.dart';
 import 'package:nureab/shared/widgets/back_bar.dart';
 import 'package:nureab/shared/widgets/rectangle_number.dart';
@@ -305,11 +306,12 @@ class _InternalWearDeviceState extends State<InternalWearDevice> {
                                           horizontal: 16),
                                       child: defaultButton(
                                         function: () {
-                                          cubit.navigate(
+                                          navigateTo(context, TreatNewPatientScreen());
+                                    /*      cubit.navigate(
                                               context,
                                               BottomNavigation(
                                                 comingIndex: 0,
-                                              ));
+                                              ));*/
                                         },
                                         text: "Next",
                                         background: lightSecondaryColor,
