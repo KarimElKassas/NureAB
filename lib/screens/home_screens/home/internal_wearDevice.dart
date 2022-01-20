@@ -144,7 +144,7 @@ class _InternalWearDeviceState extends State<InternalWearDevice> {
                           max: 100,
                         ),
                       ),
-                      RectangleNumber(num: '100'),
+                      RectangleNumber(num: cubit.PIP.round().toString()),
                     ],
                   ),
                   SizedBox(
@@ -189,10 +189,10 @@ class _InternalWearDeviceState extends State<InternalWearDevice> {
                             cubit.changeMCP(newRating);
                           },
                           min: 0,
-                          max: 100,
+                          max: 90,
                         ),
                       ),
-                      RectangleNumber(num: '90'),
+                      RectangleNumber(num: cubit.MCP.round().toString()),
                     ],
                   ),
                   SizedBox(
@@ -237,10 +237,10 @@ class _InternalWearDeviceState extends State<InternalWearDevice> {
                             cubit.changeThumb(newRating);
                           },
                           min: 0,
-                          max: 100,
+                          max: 90,
                         ),
                       ),
-                      RectangleNumber(num: '90'),
+                      RectangleNumber(num: cubit.Thumb.round().toString()),
                     ],
                   ),
                   SizedBox(
