@@ -32,34 +32,27 @@ class SettingsScreen extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            if (index == 0) {
-                              showToast(
-                                message: "Payment Settings",
-                                gravity: ToastGravity.BOTTOM,
-                                length: Toast.LENGTH_SHORT,
-                                timeInSecForIosWeb: 3,
-                              );
-                            }else if(index == 1){
+                            if(index == 0){
                               cubit.navigate(context, PersonalSettingsScreen());
-                            }else if (index == 2){
+                            }else if (index == 1){
                               showToast(
                                 message: "Share APP",
                                 gravity: ToastGravity.BOTTOM,
                                 length: Toast.LENGTH_SHORT,
                                 timeInSecForIosWeb: 3,
                               );
-                            }else if(index == 3){
+                            }else if(index == 2){
                               cubit.navigate(context, PrivacyScreen());
-                            }else if(index == 4){
+                            }else if(index == 3){
                               cubit.navigate(context, ShareFeedBackScreen());
-                            }else if (index == 5){
+                            }else if (index == 4){
                               showToast(
                                 message: "Rate APP",
                                 gravity: ToastGravity.BOTTOM,
                                 length: Toast.LENGTH_SHORT,
                                 timeInSecForIosWeb: 3,
                               );
-                            }else if (index == 6){
+                            }else if (index == 5){
                               showToast(
                                 message: moreList[index].label,
                                 gravity: ToastGravity.BOTTOM,
@@ -123,7 +116,6 @@ class SettingsScreen extends StatelessWidget {
 }
 
 List<MoreItem> moreList = [
-  MoreItem(iconData: Icons.payment_outlined, label: 'Payment Settings'),
   MoreItem(
       iconData: Icons.person_pin_circle_outlined, label: 'Personal Settings'),
   MoreItem(iconData: Icons.share_outlined, label: 'Share App'),

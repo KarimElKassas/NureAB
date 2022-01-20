@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -36,11 +37,11 @@ class _WearDeviceState extends State<WearDevice> {
                     color: greyFiveColor,
                     child: InkWell(
                       onTap: () {
-                        navigateTo(
-                            context,
-                            BottomNavigation(
-                              comingIndex: 0,
-                            ));
+                        if (Navigator.canPop(context)) {
+                          Navigator.pop(context);
+                        } else {
+                          SystemNavigator.pop();
+                        }
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -112,7 +113,7 @@ class _WearDeviceState extends State<WearDevice> {
                           max: 100,
                         ),
                       ),
-                      RectangleNumber(num: '100'),
+                      RectangleNumber(num: cubit.PIP.round().toString()),
                     ],
                   ),
                   SizedBox(
@@ -160,7 +161,7 @@ class _WearDeviceState extends State<WearDevice> {
                           max: 100,
                         ),
                       ),
-                      RectangleNumber(num: '90'),
+                      RectangleNumber(num: cubit.MCP.round().toString()),
                     ],
                   ),
                   SizedBox(
@@ -208,7 +209,7 @@ class _WearDeviceState extends State<WearDevice> {
                           max: 100,
                         ),
                       ),
-                      RectangleNumber(num: '90'),
+                      RectangleNumber(num: cubit.Thumb.round().toString()),
                     ],
                   ),
                   SizedBox(
@@ -230,7 +231,7 @@ class _WearDeviceState extends State<WearDevice> {
                       function: () {
                         showDialog(
                           context: context,
-                          builder: (context) {
+                          builder: (dialogContext) {
                             return Dialog(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.0),
@@ -274,11 +275,12 @@ class _WearDeviceState extends State<WearDevice> {
                                           horizontal: 16),
                                       child: defaultButton(
                                         function: () {
-                                          cubit.navigate(
-                                              context,
-                                              BottomNavigation(
-                                                comingIndex: 0,
-                                              ));
+                                          Navigator.pop(dialogContext);
+                                          if (Navigator.canPop(context)) {
+                                            Navigator.pop(context);
+                                          } else {
+                                            SystemNavigator.pop();
+                                          }
                                         },
                                         text: "Done",
                                         background: lightSecondaryColor,
@@ -314,12 +316,11 @@ class _WearDeviceState extends State<WearDevice> {
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: defaultButton(
                       function: () {
-                        cubit.navigate(
-                            context,
-                            BottomNavigation(
-                              comingIndex: 0,
-                            ));
-                      },
+                        if (Navigator.canPop(context)) {
+                          Navigator.pop(context);
+                        } else {
+                          SystemNavigator.pop();
+                        }                      },
                       text: "Later",
                       background: greySixColor,
                       borderColor: greyFiveColor,

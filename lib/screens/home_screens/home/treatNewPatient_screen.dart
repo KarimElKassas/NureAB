@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -910,7 +911,13 @@ class _TreatNewPatientScreenState extends State<TreatNewPatientScreen> {
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 20.0.w),
                               child: defaultButton(
-                                function: () {},
+                                function: () {
+                                  if (Navigator.canPop(context)) {
+                                    Navigator.pop(context);
+                                  } else {
+                                    SystemNavigator.pop();
+                                  }
+                                },
                                 text: "Just Save Patient",
                                 textStyle: TextStyle(
                                   color: darkBlueColor,

@@ -186,7 +186,12 @@ class ChangePasswordScreen extends StatelessWidget {
                             ),
                             defaultButton(
                               function: (){
-
+                                showToast(
+                                  message: "Password had been Changed Successfully",
+                                  gravity: ToastGravity.BOTTOM,
+                                  length: Toast.LENGTH_SHORT,
+                                  timeInSecForIosWeb: 3,
+                                );
                               },
                               text: "Done",
                               textStyle: TextStyle(

@@ -41,5 +41,10 @@ class AddPatientCubit extends Cubit<AddPatientStates>{
 
     emit(AddPatientSuccessEndState());
   }
+  void navigateFinish(BuildContext context, route){
 
+    navigateAndFinish(context, route);
+
+    emit(AddPatientSuccessEndState());
+  }
 }
