@@ -10,7 +10,6 @@ import 'package:nureab/shared/constants.dart';
 import 'package:nureab/shared/widgets/rectangle_number.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
-import '../../bottomNavigation.dart';
 
 class WearDevice extends StatefulWidget {
   const WearDevice({Key key}) : super(key: key);
@@ -158,7 +157,7 @@ class _WearDeviceState extends State<WearDevice> {
                             cubit.changeMCP(newRating);
                           },
                           min: 0,
-                          max: 100,
+                          max: 90,
                         ),
                       ),
                       RectangleNumber(num: cubit.MCP.round().toString()),
@@ -206,7 +205,7 @@ class _WearDeviceState extends State<WearDevice> {
                             cubit.changeThumb(newRating);
                           },
                           min: 0,
-                          max: 100,
+                          max: 90,
                         ),
                       ),
                       RectangleNumber(num: cubit.Thumb.round().toString()),

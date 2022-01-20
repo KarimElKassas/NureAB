@@ -936,7 +936,8 @@ class _TreatNewPatientScreenState extends State<TreatNewPatientScreen> {
                             ),
                           ],
                         ),
-                      ))
+                      ),
+                      ),
                     ],
                   ),
                 ),
