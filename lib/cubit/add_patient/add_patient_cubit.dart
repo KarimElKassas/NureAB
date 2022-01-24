@@ -19,7 +19,7 @@ class AddPatientCubit extends Cubit<AddPatientStates>{
     OptionItem(id: 2, title: "Injury Two"),
     OptionItem(id: 3, title: "Injury Three")
   ]);
-  OptionItem idOptionItemSelected = OptionItem(id: 0, title: "Injury Name");
+  OptionItem idOptionItemSelected = OptionItem(id: 0, title: "Tandon Rapture");
 
   void changeInjuryIndex(OptionItem optionItem) {
     idOptionItemSelected = optionItem;

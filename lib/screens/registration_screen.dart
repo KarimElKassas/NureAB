@@ -1,3 +1,4 @@
+import 'package:buildcondition/buildcondition.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,27 @@ class RegistrationScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => RegistrationCubit(),
       child: BlocConsumer<RegistrationCubit, RegistrationStates>(
-        listener: (context, state) {},
+        listener: (context, state) {
+
+          if(state is RegistrationErrorCreateUserState){
+
+            showToast(
+              message: state.error,
+              length: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 3,
+            );
+
+          }else if(state is RegistrationErrorSaveUserState){
+            showToast(
+              message: state.error,
+              length: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 3,
+            );
+          }
+
+        },
         builder: (context, state) {
           var cubit = RegistrationCubit.get(context);
 
@@ -541,29 +562,33 @@ class RegistrationScreen extends StatelessWidget {
                       const SizedBox(
                         height: 26.0,
                       ),
-                      defaultButton(
-                        function: () {
-                          if (formKey.currentState.validate()) {
-                            var newPass = passwordController.text.toString();
-                            var confirmNewPass =
-                                confirmPasswordController.text.toString();
-                            if (newPass != confirmNewPass) {
-                              showToast(
-                                  message:
-                                      "Password and Confirm Password doesn't match ",
-                                  length: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 3);
-                            } else {
-                              cubit.navigate(context, CreditCardScreen());
+                      BuildCondition(
+                        condition: state is RegistrationLoadingCreateUserState,
+                        builder: (context) => Center(child: CircularProgressIndicator(color: orangeColor,),),
+                        fallback: (context) => defaultButton(
+                          function: () {
+                            if (formKey.currentState.validate()) {
+                              var newPass = passwordController.text.toString();
+                              var confirmNewPass =
+                                  confirmPasswordController.text.toString();
+                              if (newPass != confirmNewPass) {
+                                showToast(
+                                    message:
+                                        "Password and Confirm Password doesn't match ",
+                                    length: Toast.LENGTH_SHORT,
+                                    gravity: ToastGravity.BOTTOM,
+                                    timeInSecForIosWeb: 3);
+                              } else {
+                                cubit.addUser(context,nameController.text.toString(),newPass,emailController.text.toString(),phoneController.text.toString(),workController.text.toString());
+                              }
                             }
-                          }
-                        },
-                        text: "Next",
-                        background: orangeColor,
-                        isUpperCase: false,
-                        textStyle: const TextStyle(
-                            fontWeight: FontWeight.w800, letterSpacing: 1.5),
+                          },
+                          text: "Done",
+                          background: orangeColor,
+                          isUpperCase: false,
+                          textStyle: const TextStyle(
+                              fontWeight: FontWeight.w800, letterSpacing: 1.5),
+                        ),
                       ),
                       const SizedBox(
                         height: 12.0,

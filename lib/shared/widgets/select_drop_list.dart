@@ -102,7 +102,7 @@ class _SelectDropListState extends State<SelectDropList>
                   alignment: const Alignment(1, 0),
                   child: Icon(
                     isShow ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
-                    color:  darkBlueColor,
+                    color:  Colors.blue,
                     size: 30,
                   ),
                 ),

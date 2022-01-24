@@ -2,12 +2,14 @@ abstract class ResetPasswordStates{}
 
 class ResetPasswordInitialState extends ResetPasswordStates{}
 
-class ResetPasswordSuccessEndState extends ResetPasswordStates{}
+class ResetPasswordLoadingState extends ResetPasswordStates{}
 
-class ResetPasswordErrorEndState extends ResetPasswordStates{
+class ResetPasswordSuccessState extends ResetPasswordStates{}
+
+class ResetPasswordErrorState extends ResetPasswordStates{
 
   final String error;
 
-  ResetPasswordErrorEndState(this.error);
+  ResetPasswordErrorState(this.error);
 
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "533084917867",
+    "project_id": "nure-ab",
+    "storage_bucket": "nure-ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533084917867:android:d16d28687c86f2d2a7a12e",
+        "android_client_info": {
+          "package_name": "com.example.nureab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "533084917867-dqfp58am8vk56dao8ik9gjtqd4033tl0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJT8ObLPIv0byU573Gp0eW9NuJKXLQPj8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "533084917867-dqfp58am8vk56dao8ik9gjtqd4033tl0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

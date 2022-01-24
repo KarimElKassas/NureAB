@@ -1,7 +1,9 @@
+import 'package:buildcondition/buildcondition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:nureab/cubit/login/login_cubit.dart';
 import 'package:nureab/cubit/login/login_states.dart';
 import 'package:nureab/screens/bottomNavigation.dart';
@@ -22,7 +24,18 @@ class LoginScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginStates>(
-        listener: (context, state) {},
+        listener: (context, state) {
+
+          if(state is LoginErrorState){
+            showToast(
+              message: state.error,
+              length: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 3,
+            );
+          }
+
+        },
         builder: (context, state) {
           var cubit = LoginCubit.get(context);
 
@@ -228,18 +241,21 @@ class LoginScreen extends StatelessWidget {
                       const SizedBox(
                         height: 48.0,
                       ),
-                      defaultButton(
-                        function: () {
-                          /* if(formKey.currentState!.validate()){
-
-                            }*/
-                          navigateTo(context, CheckBluetooth());
-                        },
-                        text: "Sign In",
-                        background: orangeColor,
-                        isUpperCase: false,
-                        textStyle: const TextStyle(
-                            fontWeight: FontWeight.w800, letterSpacing: 1.5),
+                      BuildCondition(
+                        condition: state is LoginLoadingState,
+                        builder: (context) => Center(child: CircularProgressIndicator(color: orangeColor,),),
+                        fallback:(context) => defaultButton(
+                          function: () {
+                             if(formKey.currentState.validate()){
+                                cubit.signInUser(context, emailController.text.toString(), passwordController.text.toString());
+                              }
+                          },
+                          text: "Sign In",
+                          background: orangeColor,
+                          isUpperCase: false,
+                          textStyle: const TextStyle(
+                              fontWeight: FontWeight.w800, letterSpacing: 1.5),
+                        ),
                       ),
                       const SizedBox(
                         height: 24.0,

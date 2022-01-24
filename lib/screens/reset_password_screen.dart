@@ -1,3 +1,4 @@
+import 'package:buildcondition/buildcondition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,11 +6,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:nureab/cubit/reset_password/reset_password_cubit.dart';
 import 'package:nureab/cubit/reset_password/reset_password_states.dart';
-import 'package:nureab/screens/registration_screen.dart';
 import 'package:nureab/shared/constants.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
+  var phoneController = TextEditingController();
   var newPasswordController = TextEditingController();
   var confirmNewPasswordController = TextEditingController();
   var formKey = GlobalKey<FormState>();
@@ -19,7 +20,25 @@ class ResetPasswordScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => ResetPasswordCubit(),
       child: BlocConsumer<ResetPasswordCubit, ResetPasswordStates>(
-        listener: (context, state) {},
+        listener: (context, state) {
+
+          if(state is ResetPasswordErrorState){
+            showToast(
+              message: state.error,
+              length: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 3,
+            );
+          }else if(state is ResetPasswordSuccessState){
+            showToast(
+              message: "Password had been changed successfully",
+              length: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 3,
+            );
+          }
+
+        },
         builder: (context, state) {
           var cubit = ResetPasswordCubit.get(context);
 
@@ -74,6 +93,91 @@ class ResetPasswordScreen extends StatelessWidget {
                       ),
                       const SizedBox(
                         height: 36.0,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 4.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            RichText(
+                              text: TextSpan(
+                                style: const TextStyle(
+                                  fontSize: 16.0,
+                                  fontFamily: "Open Sans",
+                                  color: Colors.white,
+                                ),
+                                children: <TextSpan>[
+                                  const TextSpan(
+                                    text: "Phone Number ",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: "Open Sans",
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: "*",
+                                    style: TextStyle(
+                                        color: orangeColor,
+                                        fontSize: 16.0,
+                                        fontFamily: "Open Sans",
+                                        overflow: TextOverflow.ellipsis),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 8.0,
+                      ),
+                      TextFormField(
+                        controller: phoneController,
+                        keyboardType: TextInputType.phone,
+                        textInputAction: TextInputAction.next, // Moves focus to next.
+                        // ignore: missing_return
+                        validator: (String value) {
+                          if (value.isEmpty) {
+                            return 'you must type phone no.';
+                          }
+                          if (value.length != 11) {
+                            return 'phone number length must be 11 number';
+                          }
+                          if (!value.startsWith('011') &&
+                              !value.startsWith('012') &&
+                              !value.startsWith('010') &&
+                              !value.startsWith('015')) {
+                            return 'invalid phone number';
+                          }
+                        },
+                        style: TextStyle(
+                            color: greyThreeColor,
+                            fontFamily: "Open Sans",
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w600),
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
+                          hintText: 'Enter Phone no.',
+                          hintStyle: TextStyle(
+                              color: greyThreeColor,
+                              fontFamily: "Open Sans",
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.w600),
+                          alignLabelWithHint: true,
+                          focusedBorder: const OutlineInputBorder(
+                              borderSide:
+                              BorderSide(color: Colors.white, width: 2.0),
+                              borderRadius:
+                              BorderRadius.all(Radius.circular(8.0))),
+                          border: const OutlineInputBorder(
+                              borderRadius:
+                              BorderRadius.all(Radius.circular(8.0))),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 18.0,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 4.0),
@@ -226,36 +330,34 @@ class ResetPasswordScreen extends StatelessWidget {
                       const SizedBox(
                         height: 48.0,
                       ),
-                      defaultButton(
-                          function: () {
-                            if(formKey.currentState.validate()){
+                      BuildCondition(
+                        condition: state is ResetPasswordLoadingState,
+                        builder: (context) => Center(child: CircularProgressIndicator(color: orangeColor,),),
+                        fallback: (context) => defaultButton(
+                            function: () {
+                              if(formKey.currentState.validate()){
 
-                              var newPass = newPasswordController.text.toString();
-                              var confirmNewPass = confirmNewPasswordController.text.toString();
-                              if(newPass != confirmNewPass){
-                                showToast(
-                                    message: "New Password and Confirm doesn't match ",
-                                    length: Toast.LENGTH_SHORT,
-                                    gravity: ToastGravity.BOTTOM,
-                                    timeInSecForIosWeb: 3);
-                              }else{
-                                showToast(
-                                    message: "Changed",
-                                    length: Toast.LENGTH_SHORT,
-                                    gravity: ToastGravity.BOTTOM,
-                                    timeInSecForIosWeb: 3);
+                                var newPass = newPasswordController.text.toString();
+                                var confirmNewPass = confirmNewPasswordController.text.toString();
+                                if(newPass != confirmNewPass){
+                                  showToast(
+                                      message: "New Password and Confirm doesn't match ",
+                                      length: Toast.LENGTH_SHORT,
+                                      gravity: ToastGravity.BOTTOM,
+                                      timeInSecForIosWeb: 3);
+                                }else{
+                                  cubit.checkUser(phoneController.text.toString(), newPass);
+                                }
+
                               }
 
-
-
-                            }
-
-                          },
-                          text: "Change Password",
-                          background: orangeColor,
-                          isUpperCase: false,
-                          textStyle: TextStyle(
-                              fontWeight: FontWeight.w800, letterSpacing: 1.5, color: darkBlueColor),
+                            },
+                            text: "Change Password",
+                            background: orangeColor,
+                            isUpperCase: false,
+                            textStyle: TextStyle(
+                                fontWeight: FontWeight.w800, letterSpacing: 1.5, color: darkBlueColor),
+                        ),
                       ),
                     ],
                   ),
