@@ -30,14 +30,12 @@ class RegistrationScreen extends StatelessWidget {
         listener: (context, state) {
 
           if(state is RegistrationErrorCreateUserState){
-
             showToast(
               message: state.error,
               length: Toast.LENGTH_SHORT,
               gravity: ToastGravity.BOTTOM,
               timeInSecForIosWeb: 3,
             );
-
           }else if(state is RegistrationErrorSaveUserState){
             showToast(
               message: state.error,
