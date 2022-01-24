@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nureab/cubit/wear_device/wear_device_cubit.dart';
 import 'package:nureab/cubit/wear_device/wear_device_states.dart';
+import 'package:nureab/screens/home_screens/home/treatNewPatient_screen.dart';
 import 'package:nureab/shared/constants.dart';
 import 'package:nureab/shared/widgets/back_bar.dart';
 import 'package:nureab/shared/widgets/rectangle_number.dart';
@@ -143,7 +144,7 @@ class _InternalWearDeviceState extends State<InternalWearDevice> {
                           max: 100,
                         ),
                       ),
-                      RectangleNumber(num: '100'),
+                      RectangleNumber(num: cubit.PIP.round().toString()),
                     ],
                   ),
                   SizedBox(
@@ -188,10 +189,10 @@ class _InternalWearDeviceState extends State<InternalWearDevice> {
                             cubit.changeMCP(newRating);
                           },
                           min: 0,
-                          max: 100,
+                          max: 90,
                         ),
                       ),
-                      RectangleNumber(num: '90'),
+                      RectangleNumber(num: cubit.MCP.round().toString()),
                     ],
                   ),
                   SizedBox(
@@ -236,10 +237,10 @@ class _InternalWearDeviceState extends State<InternalWearDevice> {
                             cubit.changeThumb(newRating);
                           },
                           min: 0,
-                          max: 100,
+                          max: 90,
                         ),
                       ),
-                      RectangleNumber(num: '90'),
+                      RectangleNumber(num: cubit.Thumb.round().toString()),
                     ],
                   ),
                   SizedBox(
@@ -305,11 +306,12 @@ class _InternalWearDeviceState extends State<InternalWearDevice> {
                                           horizontal: 16),
                                       child: defaultButton(
                                         function: () {
-                                          cubit.navigate(
+                                          navigateTo(context, TreatNewPatientScreen());
+                                    /*      cubit.navigate(
                                               context,
                                               BottomNavigation(
                                                 comingIndex: 0,
-                                              ));
+                                              ));*/
                                         },
                                         text: "Next",
                                         background: lightSecondaryColor,

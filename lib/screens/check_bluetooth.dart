@@ -4,6 +4,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:nureab/cubit/bluetooth/bluetooth_cubit.dart';
 import 'package:nureab/cubit/bluetooth/bluetooth_states.dart';
 import 'package:nureab/screens/bottomNavigation.dart';
@@ -91,7 +92,12 @@ class CheckBluetooth extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: defaultButton(
                       function: () {
-                        // cubit.navigate(context, RegistrationScreen());
+                        showToast(
+                          message: "Bluetooth Activated",
+                          gravity: ToastGravity.BOTTOM,
+                          length: Toast.LENGTH_SHORT,
+                          timeInSecForIosWeb: 3,
+                        );
                       },
                       text: "Activate Bluetooth",
                       background: lightSecondaryColor,

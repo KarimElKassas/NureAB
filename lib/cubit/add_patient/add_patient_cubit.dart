@@ -19,7 +19,8 @@ class AddPatientCubit extends Cubit<AddPatientStates>{
     OptionItem(id: 2, title: "Injury Two"),
     OptionItem(id: 3, title: "Injury Three")
   ]);
-  OptionItem idOptionItemSelected = OptionItem(id: 0, title: "Tandon Rapture");
+
+  OptionItem idOptionItemSelected = OptionItem(id: 0, title: "Injury Name");
 
   void changeInjuryIndex(OptionItem optionItem) {
     idOptionItemSelected = optionItem;
@@ -40,5 +41,10 @@ class AddPatientCubit extends Cubit<AddPatientStates>{
 
     emit(AddPatientSuccessEndState());
   }
+  void navigateFinish(BuildContext context, route){
 
+    navigateAndFinish(context, route);
+
+    emit(AddPatientSuccessEndState());
+  }
 }

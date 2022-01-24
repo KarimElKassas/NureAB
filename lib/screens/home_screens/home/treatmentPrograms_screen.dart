@@ -8,11 +8,13 @@ import 'package:flutter_screenutil/size_extension.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nureab/cubit/treat_programs/treat_programs_cubit.dart';
 import 'package:nureab/cubit/treat_programs/treat_programs_states.dart';
+import 'package:nureab/screens/home_screens/home/treatNewPatient_screen.dart';
 import 'package:nureab/screens/home_screens/home/tutorials_screen.dart';
 import 'package:nureab/shared/constants.dart';
 import 'package:nureab/shared/widgets/back_bar.dart';
 
 import '../../bottomNavigation.dart';
+import 'internal_wearDevice.dart';
 
 class TreatmentProgramsScreen extends StatelessWidget {
   var radioSelected = 1;
@@ -294,6 +296,10 @@ class TreatmentProgramsScreen extends StatelessWidget {
                               ),
                               defaultButton(
                                 function: () {
+
+
+
+
                                   showDialog(
                                     context: context,
                                     builder: (context) {
@@ -317,7 +323,7 @@ class TreatmentProgramsScreen extends StatelessWidget {
                                                             .symmetric(
                                                         horizontal: 20),
                                                     child: AutoSizeText(
-                                                      "choose Program",
+                                                      "Patient's Type",
                                                       style: TextStyle(
                                                           fontSize: ScreenUtil()
                                                               .setSp(16,
@@ -367,7 +373,7 @@ class TreatmentProgramsScreen extends StatelessWidget {
                                                             });
                                                           }),
                                                       AutoSizeText(
-                                                        "PIP Program",
+                                                        "New Patient",
                                                         style: TextStyle(
                                                             fontSize: ScreenUtil()
                                                                 .setSp(14,
@@ -405,7 +411,7 @@ class TreatmentProgramsScreen extends StatelessWidget {
                                                             });
                                                           }),
                                                       AutoSizeText(
-                                                        "MCP Program",
+                                                        "Exiting Patient",
                                                         style: TextStyle(
                                                             fontSize: ScreenUtil()
                                                                 .setSp(14,
@@ -422,82 +428,7 @@ class TreatmentProgramsScreen extends StatelessWidget {
                                                     ],
                                                   ),
                                                 ),
-                                                InkWell(
-                                                  onTap: (){
-                                                    setState((){
-                                                      radioSelected = 3;
-                                                    });
-                                                  },
-                                                  child: Row(
-                                                    children: [
-                                                      Radio(
-                                                          value: 3,
-                                                          groupValue:
-                                                              radioSelected,
-                                                          activeColor:
-                                                              darkBlueColor,
-                                                          onChanged: (val) {
-                                                            setState(() {
-                                                              radioSelected =
-                                                                  val;
-                                                            });
-                                                          }),
-                                                      AutoSizeText(
-                                                        "Thumb Program",
-                                                        style: TextStyle(
-                                                            fontSize: ScreenUtil()
-                                                                .setSp(14,
-                                                                    allowFontScalingSelf:
-                                                                        true),
-                                                            color:
-                                                                darkBlueColor,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                InkWell(
-                                                  onTap: (){
-                                                    setState((){
-                                                      radioSelected = 4;
-                                                    });
-                                                  },
-                                                  child: Row(
-                                                    children: [
-                                                      Radio(
-                                                          value: 4,
-                                                          groupValue:
-                                                              radioSelected,
-                                                          activeColor:
-                                                              darkBlueColor,
-                                                          onChanged: (val) {
-                                                            setState(() {
-                                                              radioSelected =
-                                                                  val;
-                                                            });
-                                                          }),
-                                                      AutoSizeText(
-                                                        "Stroke Program",
-                                                        style: TextStyle(
-                                                            fontSize: ScreenUtil()
-                                                                .setSp(14,
-                                                                    allowFontScalingSelf:
-                                                                        true),
-                                                            color:
-                                                                darkBlueColor,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
+
                                                 SizedBox(
                                                   height: 8.h,
                                                 ),
@@ -514,11 +445,166 @@ class TreatmentProgramsScreen extends StatelessWidget {
                                                         flex: 1,
                                                         child: defaultButton(
                                                           function: () {
-                                                            if (Navigator.canPop(context)) {
+
+                                                            showDialog(
+                                                              context: context,
+                                                              builder: (context) {
+                                                                return StatefulBuilder(
+                                                                  builder: (context, setState) {
+                                                                    return Dialog(
+                                                                      shape: RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                        BorderRadius.circular(15.0),
+                                                                      ),
+                                                                      child: Column(
+                                                                        mainAxisSize: MainAxisSize.min,
+                                                                        crossAxisAlignment:
+                                                                        CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          SizedBox(
+                                                                            height: 20.h,
+                                                                          ),
+                                                                          Padding(
+                                                                              padding: const EdgeInsets
+                                                                                  .symmetric(
+                                                                                  horizontal: 16),
+                                                                              child: AutoSizeText(
+                                                                                "Is the patient wearing the device?",
+                                                                                style: TextStyle(
+                                                                                    fontSize: ScreenUtil()
+                                                                                        .setSp(14,
+                                                                                        allowFontScalingSelf:
+                                                                                        true),
+                                                                                    color:
+                                                                                    darkBlueColor,
+                                                                                    fontWeight:
+                                                                                    FontWeight
+                                                                                        .bold),
+                                                                                textAlign:
+                                                                                TextAlign.start,
+                                                                              )),
+                                                                          SizedBox(
+                                                                            height: 8.h,
+                                                                          ),
+                                                                          Padding(
+                                                                            padding: const EdgeInsets
+                                                                                .symmetric(
+                                                                                horizontal: 16),
+                                                                            child: Divider(
+                                                                              thickness: 2,
+                                                                              color: greyColor,
+                                                                            ),
+                                                                          ),
+                                                                          SizedBox(
+                                                                            height: 8.h,
+                                                                          ),
+                                                                          InkWell(
+                                                                            onTap: (){
+                                                                              setState((){
+                                                                                radioSelected = 1;
+                                                                              });
+                                                                            },
+                                                                            child: Padding(
+                                                                              padding: const EdgeInsets.symmetric(horizontal: 16),
+                                                                              child: Text("For the device to operate correctly we need the make sure the patient is wearing the device"),
+                                                                            ),
+                                                                          ),
+
+
+                                                                          SizedBox(
+                                                                            height: 8.h,
+                                                                          ),
+                                                                          Padding(
+                                                                            padding: const EdgeInsets
+                                                                                .symmetric(
+                                                                                horizontal: 8),
+                                                                            child: Row(
+                                                                              mainAxisAlignment:
+                                                                              MainAxisAlignment
+                                                                                  .spaceBetween,
+                                                                              children: [
+                                                                                Expanded(
+                                                                                  flex: 1,
+                                                                                  child: defaultButton(
+                                                                                    function: () {     navigateAndFinish(context, TreatNewPatientScreen());
+                                                                                 /*     if (Navigator.canPop(context)) {
+                                                                                        Navigator.pop(context);
+                                                                                      } else {
+                                                                                        SystemNavigator.pop();
+                                                                                      }*/
+                                                                                    },
+                                                                                    text:
+                                                                                    "Yes",
+                                                                                    background:
+                                                                                    lightSecondaryColor,
+                                                                                    borderColor:
+                                                                                    lightSecondaryColor,
+                                                                                    isUpperCase: false,
+                                                                                    textStyle: TextStyle(
+                                                                                        fontSize: ScreenUtil()
+                                                                                            .setSp(14,
+                                                                                            allowFontScalingSelf:
+                                                                                            true),
+                                                                                        fontWeight:
+                                                                                        FontWeight
+                                                                                            .w800,
+                                                                                        color: Colors
+                                                                                            .white),
+                                                                                  ),
+                                                                                ),
+                                                                                SizedBox(
+                                                                                  width: 8.0.w,
+                                                                                ),
+                                                                                Expanded(
+                                                                                  flex: 1,
+                                                                                  child: defaultButton(
+                                                                                    function: () {
+                                                                                      navigateAndFinish(context, InternalWearDevice());
+                                                                                 /*     if (Navigator.canPop(context)) {
+                                                                                        Navigator.pop(context);
+                                                                                      } else {
+                                                                                        SystemNavigator.pop();
+                                                                                      }*/
+                                                                                    },
+                                                                                    text:
+                                                                                    "Device Wearing Settings",
+                                                                                    background:
+                                                                                    greyFiveColor,
+                                                                                    textColor:
+                                                                                    darkBlueColor,
+                                                                                    borderColor:
+                                                                                    greyFiveColor,
+                                                                                    isUpperCase: false,
+                                                                                    textStyle: TextStyle(
+                                                                                        fontSize: ScreenUtil()
+                                                                                            .setSp(10,
+                                                                                            allowFontScalingSelf:
+                                                                                            true),
+                                                                                        fontWeight:
+                                                                                        FontWeight
+                                                                                            .w800,
+                                                                                        color: Color(
+                                                                                            0xff0F2644)),
+                                                                                  ),
+                                                                                ),
+                                                                              ],
+                                                                            ),
+                                                                          ),
+                                                                          SizedBox(
+                                                                            height: 8.0.w,
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                );
+                                                              },
+                                                            );
+                                                       /*     if (Navigator.canPop(context)) {
                                                               Navigator.pop(context);
                                                             } else {
                                                               SystemNavigator.pop();
-                                                            }
+                                                            }*/
                                                           },
                                                           text:
                                                               "Continue",
