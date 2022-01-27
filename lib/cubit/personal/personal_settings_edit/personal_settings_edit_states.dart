@@ -2,12 +2,18 @@ abstract class PersonalSettingsEditStates{}
 
 class PersonalSettingsEditInitialState extends PersonalSettingsEditStates{}
 
+class PersonalSettingsEditSuccessGetUserDataState extends PersonalSettingsEditStates{}
+
+class PersonalSettingsEditLoadingUpdateUserDataState extends PersonalSettingsEditStates{}
+
+class PersonalSettingsEditSuccessUpdateUserDataState extends PersonalSettingsEditStates{}
+
 class PersonalSettingsEditSuccessEndState extends PersonalSettingsEditStates{}
 
-class PersonalSettingsEditErrorEndState extends PersonalSettingsEditStates{
+class PersonalSettingsEditErrorUpdateUserDataState extends PersonalSettingsEditStates{
 
   final String error;
 
-  PersonalSettingsEditErrorEndState(this.error);
+  PersonalSettingsEditErrorUpdateUserDataState(this.error);
 
 }

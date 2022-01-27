@@ -567,8 +567,7 @@ class RegistrationScreen extends StatelessWidget {
                           function: () {
                             if (formKey.currentState.validate()) {
                               var newPass = passwordController.text.toString();
-                              var confirmNewPass =
-                                  confirmPasswordController.text.toString();
+                              var confirmNewPass = confirmPasswordController.text.toString();
                               if (newPass != confirmNewPass) {
                                 showToast(
                                     message:

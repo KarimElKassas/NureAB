@@ -10,6 +10,8 @@ class AddPatientChangeHandState extends AddPatientStates{}
 
 class AddPatientSuccessEndState extends AddPatientStates{}
 
+class AddPatientLoadingState extends AddPatientStates{}
+
 class AddPatientErrorEndState extends AddPatientStates{
 
   final String error;

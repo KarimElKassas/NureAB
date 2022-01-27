@@ -1,11 +1,15 @@
+import 'package:nureab/model/session_model.dart';
+
 class PatientModel {
-  String name, date, gender;
-  int age;
+  String name, startingDate, gender, patientCase, hand;
+  int age, numOfSessions;
+  List<SessionModel> sessionsList;
 
   PatientModel({
     this.name,
-    this.date,
+    this.startingDate,
     this.gender,
     this.age,
   });
 }
+

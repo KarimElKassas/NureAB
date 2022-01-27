@@ -20,7 +20,7 @@ class PersonalSettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => PersonalSettingsCubit(),
+      create: (context) => PersonalSettingsCubit()..getUserData(),
       child: BlocConsumer<PersonalSettingsCubit, PersonalSettingsStates>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -127,7 +127,7 @@ class PersonalSettingsScreen extends StatelessWidget {
                               decoration: InputDecoration(
                                 filled: true,
                                 fillColor: greyColor,
-                                hintText: 'John Doe',
+                                hintText: cubit.userName,
                                 hintStyle: TextStyle(
                                     color: greyThreeColor,
                                     fontFamily: "Open Sans",
@@ -178,7 +178,7 @@ class PersonalSettingsScreen extends StatelessWidget {
                               decoration: InputDecoration(
                                 filled: true,
                                 fillColor: greyColor,
-                                hintText: 'JohnDoe@example.com',
+                                hintText: cubit.userEmail,
                                 hintStyle: TextStyle(
                                     color: greyThreeColor,
                                     fontFamily: "Open Sans",
@@ -229,7 +229,7 @@ class PersonalSettingsScreen extends StatelessWidget {
                               decoration: InputDecoration(
                                 filled: true,
                                 fillColor: greyColor,
-                                hintText: '011122334466',
+                                hintText: cubit.userPhone,
                                 hintStyle: TextStyle(
                                     color: greyThreeColor,
                                     fontFamily: "Open Sans",
@@ -280,7 +280,7 @@ class PersonalSettingsScreen extends StatelessWidget {
                               decoration: InputDecoration(
                                 filled: true,
                                 fillColor: greyColor,
-                                hintText: 'John Doe Clinic',
+                                hintText: cubit.userWorkName,
                                 hintStyle: TextStyle(
                                     color: greyThreeColor,
                                     fontFamily: "Open Sans",

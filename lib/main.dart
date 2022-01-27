@@ -9,6 +9,8 @@ import 'package:nureab/screens/program_setup_screen.dart';
 import 'package:nureab/screens/splash_screen.dart';
 import 'package:nureab/shared/bloc_observer.dart';
 
+import 'cubit/patient_list/patient_list_cubit.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -27,9 +29,17 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
         designSize: const Size(411.42857, 899.42857),
         builder: () {
-          return BlocProvider(
-            create: (context) => BottomNavCubit(),
-            child: BlocConsumer<BottomNavCubit, BottomNavStates>(
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider<BottomNavCubit>(
+                create: (BuildContext context) => BottomNavCubit(),
+              ),
+              BlocProvider<PatientListCubit>(
+                create: (BuildContext context) => PatientListCubit(),
+              ),
+
+            ],
+            child:  BlocConsumer<BottomNavCubit, BottomNavStates>(
               listener: (context, state) {},
               builder: (context, state) {
                 return MaterialApp(
@@ -42,8 +52,11 @@ class MyApp extends StatelessWidget {
                   home: SplashScreen(),
                 );
               },
-            ),
+            )
           );
+
+
+
         });
   }
 }

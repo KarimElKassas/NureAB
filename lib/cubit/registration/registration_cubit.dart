@@ -54,7 +54,7 @@ class RegistrationCubit extends Cubit<RegistrationStates>{
   void saveUser(BuildContext context,String userName,String userEmail,String userPhone,String userWorkName,String userPassword)async {
 
     CollectionReference users = FirebaseFirestore.instance.collection('Users');
-    DocumentReference userDoc = users.doc(userPhone);
+    DocumentReference userDoc = users.doc(userEmail);
     Map<String, Object> dataMap = HashMap();
 
     dataMap['UserName'] = userName;
@@ -63,7 +63,7 @@ class RegistrationCubit extends Cubit<RegistrationStates>{
     dataMap['UserWorkName'] = userWorkName;
     dataMap["UserPassword"] = userPassword;
 
-    userDoc.set(dataMap).then((value){
+    userDoc.collection('User Info').doc(userEmail).set(dataMap).then((value){
 
       navigateAndFinish(context, LoginScreen());
 
