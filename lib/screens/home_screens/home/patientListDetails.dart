@@ -1,7 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:buildcondition/buildcondition.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';import 'package:auto_size_text/auto_size_text.dart';
-
+import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -57,9 +57,8 @@ class _PatientListDetailsState extends State<PatientListDetails> {
                                   child: Container(
                                     child: defaultButton(
                                       function: () {
-
-                                        cubit.navigate(context, ProgramSetupScreen());
-
+                                        cubit.navigate(
+                                            context, ProgramSetupScreen());
                                       },
                                       text: "Start New Program",
                                       background: lightSecondaryColor,
@@ -247,20 +246,24 @@ class _PatientListDetailsState extends State<PatientListDetails> {
                                         padding: const EdgeInsets.all(16.0),
                                         child: Container(
                                             height: 600.h,
-                                            width: MediaQuery.of(context).size.width,
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
                                             child: SvgPicture.asset(
                                               'assets/images/Frame.svg',
                                               fit: BoxFit.fill,
                                             )),
                                       ),
                                       Positioned(
-                                          top: 25,
-                                          right: 25,
-                                          left: 160,
-                                          child: SelectDropList(cubit.idOptionItemSelected,
-                                              cubit.idDropListModel, (optionItem) {
-                                                    cubit.changeGraphIndex(optionItem);
-                                              }, null),
+                                        top: 25,
+                                        right: 25,
+                                        left: 160,
+                                        child: SelectDropList(
+                                            cubit.idOptionItemSelected,
+                                            cubit.idDropListModel,
+                                            (optionItem) {
+                                          cubit.changeGraphIndex(optionItem);
+                                        }, null),
                                       ),
                                     ],
                                   );
@@ -312,17 +315,18 @@ class _PatientListDetailsState extends State<PatientListDetails> {
                                                                       allowFontScalingSelf:
                                                                           true)),
                                                         ),
-                                                        AutoSizeText('PIP Program',
+                                                        AutoSizeText(
+                                                            'PIP Program',
                                                             style: TextStyle(
                                                                 color:
                                                                     darkBlueColor,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold,
-                                                                fontSize: ScreenUtil().setSp(
-                                                                    16,
-                                                                    allowFontScalingSelf:
-                                                                        true)))
+                                                                fontSize: ScreenUtil()
+                                                                    .setSp(16,
+                                                                        allowFontScalingSelf:
+                                                                            true)))
                                                       ],
                                                     ),
                                                   ),
@@ -540,25 +544,29 @@ class _PatientListDetailsState extends State<PatientListDetails> {
                                                           ],
                                                         ),
                                                       ),
-                                                      AutoSizeText(
-                                                        "Start Program",
-                                                        style: TextStyle(
-                                                            color: Color(
-                                                                0xFF219653),
-                                                            fontSize: ScreenUtil()
-                                                                .setSp(16,
-                                                                    allowFontScalingSelf:
-                                                                        true),
-                                                            fontFamily:
-                                                                "Open Sans",
-                                                            decoration:
-                                                                TextDecoration
-                                                                    .underline,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            overflow:
-                                                                TextOverflow
-                                                                    .ellipsis),
+                                                      InkWell(
+                                                        onTap: () {},
+                                                        child: AutoSizeText(
+                                                          "Start Program",
+                                                          style: TextStyle(
+                                                              color: Color(
+                                                                  0xFF219653),
+                                                              fontSize: ScreenUtil()
+                                                                  .setSp(16,
+                                                                      allowFontScalingSelf:
+                                                                          true),
+                                                              fontFamily:
+                                                                  "Open Sans",
+                                                              decoration:
+                                                                  TextDecoration
+                                                                      .underline,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis),
+                                                        ),
                                                       )
                                                     ],
                                                   ),
@@ -581,6 +589,7 @@ class _PatientListDetailsState extends State<PatientListDetails> {
                   ),
                 ),
               );
-            }));
+            }),
+    );
   }
 }

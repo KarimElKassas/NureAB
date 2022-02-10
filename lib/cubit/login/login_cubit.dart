@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nureab/cubit/login/login_states.dart';
 import 'package:nureab/model/user_model.dart';
+import 'package:nureab/screens/bottomNavigation.dart';
 import 'package:nureab/screens/check_bluetooth.dart';
 import 'package:nureab/shared/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -27,7 +28,7 @@ class LoginCubit extends Cubit<LoginStates> {
   }
 
   void signInUser(BuildContext context, String userEmail,
-      String userPassword) async {
+      String userPassword,bool bluetoothEnabled) async {
     try {
       emit(LoginLoadingState());
 
@@ -43,6 +44,7 @@ class LoginCubit extends Cubit<LoginStates> {
           await prefs.setString("UserPassword", userPassword);
           await prefs.setString("UserPhone", userModel.userPhone);
           await prefs.setString("UserWorkName", userModel.userWorkName);
+          bluetoothEnabled?  navigateAndFinish(context, BottomNavigation(comingIndex: 0,)):
           navigateAndFinish(context, CheckBluetooth());
           emit(LoginSuccessState());
         });

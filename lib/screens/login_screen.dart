@@ -10,14 +10,36 @@ import 'package:nureab/screens/bottomNavigation.dart';
 import 'package:nureab/screens/registration_screen.dart';
 import 'package:nureab/screens/reset_password_screen.dart';
 import 'package:nureab/shared/constants.dart';
+import 'package:flutter_blue/flutter_blue.dart';
 
 import 'check_bluetooth.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   var emailController = TextEditingController();
+
   var passwordController = TextEditingController();
+
   var formKey = GlobalKey<FormState>();
+
+  FlutterBlue flutterBlue = FlutterBlue.instance;
+bool bluetoothEnabled;
+  Future<bool> _checkDeviceBluetoothIsOn() async {
+    bluetoothEnabled=await flutterBlue.isOn;
+    print('bluetooth enabled is $bluetoothEnabled');
+    return await flutterBlue.isOn;
+  }
+
+  @override
+  void initState() {
+    _checkDeviceBluetoothIsOn();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +47,7 @@ class LoginScreen extends StatelessWidget {
       create: (context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginStates>(
         listener: (context, state) {
-
-          if(state is LoginErrorState){
+          if (state is LoginErrorState) {
             showToast(
               message: state.error,
               length: Toast.LENGTH_SHORT,
@@ -34,7 +55,6 @@ class LoginScreen extends StatelessWidget {
               timeInSecForIosWeb: 3,
             );
           }
-
         },
         builder: (context, state) {
           var cubit = LoginCubit.get(context);
@@ -43,7 +63,8 @@ class LoginScreen extends StatelessWidget {
             appBar: AppBar(
               systemOverlayStyle: SystemUiOverlayStyle(
                 statusBarColor: darkBlueColor,
-                statusBarIconBrightness: Brightness.light, // For Android (dark icons)
+                statusBarIconBrightness: Brightness.light,
+                // For Android (dark icons)
                 statusBarBrightness: Brightness.dark, // For iOS (dark icons)
               ),
               toolbarHeight: 0,
@@ -243,12 +264,19 @@ class LoginScreen extends StatelessWidget {
                       ),
                       BuildCondition(
                         condition: state is LoginLoadingState,
-                        builder: (context) => Center(child: CircularProgressIndicator(color: orangeColor,),),
-                        fallback:(context) => defaultButton(
+                        builder: (context) => Center(
+                          child: CircularProgressIndicator(
+                            color: orangeColor,
+                          ),
+                        ),
+                        fallback: (context) => defaultButton(
                           function: () {
-                             if(formKey.currentState.validate()){
-                                cubit.signInUser(context, emailController.text.toString(), passwordController.text.toString());
-                              }
+                            if (formKey.currentState.validate()) {
+                              cubit.signInUser(
+                                  context,
+                                  emailController.text.toString(),
+                                  passwordController.text.toString(),bluetoothEnabled);
+                            }
                           },
                           text: "Sign In",
                           background: orangeColor,

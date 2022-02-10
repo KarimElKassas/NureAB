@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +16,15 @@ import 'package:nureab/shared/constants.dart';
 import 'package:nureab/shared/widgets/back_bar.dart';
 import 'package:nureab/shared/widgets/rectangle_number.dart';
 import 'package:nureab/shared/widgets/select_drop_list.dart';
-
-import 'home_screens/home/treatNewPatient_screen.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ProgramSetupScreen extends StatefulWidget {
-  const ProgramSetupScreen({Key key}) : super(key: key);
+  final double pip, mcp, thump;
+
+  const ProgramSetupScreen(
+      {Key key, @required this.pip, @required this.mcp, @required this.thump})
+      : super(key: key);
 
   @override
   State<ProgramSetupScreen> createState() => _ProgramSetupScreenState();
@@ -42,8 +48,11 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: (){
-        navigateTo(context, TreatNewPatientScreen());
+      // ignore: missing_return
+      onWillPop: () {
+        if (Navigator.canPop(context)) {
+          Navigator.pop(context);
+        }
       },
       child: BlocProvider(
         create: (context) => ProgramSetupCubit(),
@@ -104,7 +113,8 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                     ),
                                   ),
                                   Container(
-                                    width: MediaQuery.of(context).size.width - 80,
+                                    width:
+                                        MediaQuery.of(context).size.width - 80,
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -151,7 +161,8 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                               height: 8.h,
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 16),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16),
                               child: Divider(
                                 thickness: 2,
                                 color: greyColor,
@@ -179,8 +190,16 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                   left: 20.w, right: 20.w, top: 12.h),
                               child: SelectDropList(cubit.idOptionItemSelected,
                                   cubit.idDropListModel, (optionItem) {
-                                cubit.changeProgramIndex(optionItem);
-
+                                if (optionItem.id == 1) {
+                                  cubit.changeProgramIndex(
+                                      optionItem, widget.pip);
+                                } else if (optionItem.id == 2) {
+                                  cubit.changeProgramIndex(
+                                      optionItem, widget.mcp);
+                                } else if (optionItem.id == 3) {
+                                  cubit.changeProgramIndex(
+                                      optionItem, widget.thump);
+                                }
                                 if (optionItem.id == 4) {
                                   cubit.showGripVisibility();
                                 } else {
@@ -192,7 +211,8 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                               height: 18.h,
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 16),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16),
                               child: Divider(
                                 thickness: 2,
                                 color: greyColor,
@@ -205,13 +225,14 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 16.w),
                                   child: AutoSizeText(
                                     "Program Duration",
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: ScreenUtil()
-                                          .setSp(18, allowFontScalingSelf: true),
+                                      fontSize: ScreenUtil().setSp(18,
+                                          allowFontScalingSelf: true),
                                       overflow: TextOverflow.ellipsis,
                                     ),
                                     overflow: TextOverflow.ellipsis,
@@ -222,12 +243,13 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                   height: 4.0.h,
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 16.w),
                                   child: AutoSizeText(
                                     "How Much the program will last",
                                     style: TextStyle(
-                                      fontSize: ScreenUtil()
-                                          .setSp(16, allowFontScalingSelf: true),
+                                      fontSize: ScreenUtil().setSp(16,
+                                          allowFontScalingSelf: true),
                                       color: Colors.grey,
                                       overflow: TextOverflow.ellipsis,
                                     ),
@@ -267,16 +289,20 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                               hintStyle: TextStyle(
                                                   color: darkBlueColor,
                                                   fontFamily: "Open Sans",
-                                                  fontSize: ScreenUtil().setSp(16,
-                                                      allowFontScalingSelf: true),
+                                                  fontSize: ScreenUtil().setSp(
+                                                      16,
+                                                      allowFontScalingSelf:
+                                                          true),
                                                   fontWeight: FontWeight.w600),
                                               alignLabelWithHint: true,
                                               focusedBorder: OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                       color: greyBorderColor,
                                                       width: 0.0),
-                                                  borderRadius: BorderRadius.all(
-                                                      Radius.circular(8.0))),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              8.0))),
                                               border: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                     color: greyBorderColor,
@@ -288,8 +314,10 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                                   borderSide: BorderSide(
                                                       color: greyBorderColor,
                                                       width: 0.0),
-                                                  borderRadius: BorderRadius.all(
-                                                      Radius.circular(8.0))),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              8.0))),
                                             ),
                                           ),
                                         ),
@@ -310,16 +338,18 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                               var parts =
                                                   durationValue.split(" ");
 
-                                              var minusValue = int.parse(parts[0]
-                                                      .trim()
-                                                      .toString()) -
+                                              var minusValue = int.parse(
+                                                      parts[0]
+                                                          .trim()
+                                                          .toString()) -
                                                   1;
 
                                               var newDuration =
                                                   "${minusValue.toString()} Min";
 
                                               if (minusValue > 0) {
-                                                cubit.changeDuration(newDuration);
+                                                cubit.changeDuration(
+                                                    newDuration);
                                               }
                                             },
                                             isSvg: true,
@@ -345,15 +375,17 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                               var parts =
                                                   durationValue.split(" ");
 
-                                              var minusValue = int.parse(parts[0]
+                                              var plusValue = int.parse(parts[0]
                                                       .trim()
                                                       .toString()) +
                                                   1;
 
                                               var newDuration =
-                                                  "${minusValue.toString()} Min";
-
-                                              cubit.changeDuration(newDuration);
+                                                  "${plusValue.toString()} Min";
+                                              if (plusValue <= 60) {
+                                                cubit.changeDuration(
+                                                    newDuration);
+                                              }
                                             },
                                             isSvg: true,
                                             svgPath: "assets/images/add.svg",
@@ -371,7 +403,8 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                               height: 18.h,
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 16),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16),
                               child: Divider(
                                 thickness: 2,
                                 color: greyColor,
@@ -384,13 +417,14 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 16.w),
                                   child: AutoSizeText(
                                     "Program Repetition",
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: ScreenUtil()
-                                          .setSp(18, allowFontScalingSelf: true),
+                                      fontSize: ScreenUtil().setSp(18,
+                                          allowFontScalingSelf: true),
                                       overflow: TextOverflow.ellipsis,
                                     ),
                                     overflow: TextOverflow.ellipsis,
@@ -401,12 +435,13 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                   height: 4.0.h,
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 16.w),
                                   child: AutoSizeText(
                                     "How many the program will repeat",
                                     style: TextStyle(
-                                      fontSize: ScreenUtil()
-                                          .setSp(16, allowFontScalingSelf: true),
+                                      fontSize: ScreenUtil().setSp(16,
+                                          allowFontScalingSelf: true),
                                       color: Colors.grey,
                                       overflow: TextOverflow.ellipsis,
                                     ),
@@ -446,16 +481,20 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                               hintStyle: TextStyle(
                                                   color: darkBlueColor,
                                                   fontFamily: "Open Sans",
-                                                  fontSize: ScreenUtil().setSp(16,
-                                                      allowFontScalingSelf: true),
+                                                  fontSize: ScreenUtil().setSp(
+                                                      16,
+                                                      allowFontScalingSelf:
+                                                          true),
                                                   fontWeight: FontWeight.w600),
                                               alignLabelWithHint: true,
                                               focusedBorder: OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                       color: greyBorderColor,
                                                       width: 0.0),
-                                                  borderRadius: BorderRadius.all(
-                                                      Radius.circular(8.0))),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              8.0))),
                                               border: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                     color: greyBorderColor,
@@ -467,8 +506,10 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                                   borderSide: BorderSide(
                                                       color: greyBorderColor,
                                                       width: 0.0),
-                                                  borderRadius: BorderRadius.all(
-                                                      Radius.circular(8.0))),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              8.0))),
                                             ),
                                           ),
                                         ),
@@ -489,15 +530,16 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                               var parts =
                                                   repetitionValue.split(" ");
 
-                                              var minusValue = int.parse(parts[0]
-                                                      .trim()
-                                                      .toString()) -
+                                              var minusValue = int.parse(
+                                                      parts[0]
+                                                          .trim()
+                                                          .toString()) -
                                                   1;
 
                                               var newRepetition =
                                                   "${minusValue.toString()} x";
 
-                                              if (minusValue > 0) {
+                                              if (minusValue >= 0) {
                                                 cubit.changeRepetition(
                                                     newRepetition);
                                               }
@@ -525,9 +567,10 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                               var parts =
                                                   repetitionValue.split(" ");
 
-                                              var minusValue = int.parse(parts[0]
-                                                      .trim()
-                                                      .toString()) +
+                                              var minusValue = int.parse(
+                                                      parts[0]
+                                                          .trim()
+                                                          .toString()) +
                                                   1;
 
                                               var newRepetition =
@@ -552,7 +595,8 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                               height: 18.h,
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 16),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16),
                               child: Divider(
                                 thickness: 2,
                                 color: greyColor,
@@ -565,13 +609,14 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 16.w),
                                   child: AutoSizeText(
                                     "Vibration",
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: ScreenUtil()
-                                          .setSp(18, allowFontScalingSelf: true),
+                                      fontSize: ScreenUtil().setSp(18,
+                                          allowFontScalingSelf: true),
                                       overflow: TextOverflow.ellipsis,
                                     ),
                                     overflow: TextOverflow.ellipsis,
@@ -604,7 +649,8 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                           text: "Vibration",
                                           isUpperCase: false,
                                           isSvg: true,
-                                          svgPath: "assets/images/vibration.svg",
+                                          svgPath:
+                                              "assets/images/vibration.svg",
                                           textStyle: TextStyle(
                                             color: cubit.isVibration
                                                 ? Colors.white
@@ -656,7 +702,8 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                               height: 18.h,
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 16),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16),
                               child: Divider(
                                 thickness: 2,
                                 color: greyColor,
@@ -670,7 +717,8 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                               child: Column(
                                 children: [
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Padding(
                                         padding: EdgeInsets.symmetric(
@@ -718,8 +766,10 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                                       ? Colors.white
                                                       : darkBlueColor,
                                                   fontWeight: FontWeight.bold,
-                                                  fontSize: ScreenUtil().setSp(15,
-                                                      allowFontScalingSelf: true),
+                                                  fontSize: ScreenUtil().setSp(
+                                                      15,
+                                                      allowFontScalingSelf:
+                                                          true),
                                                 ),
                                               ),
                                             ),
@@ -727,8 +777,8 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                           Expanded(
                                             flex: 1,
                                             child: Padding(
-                                              padding:
-                                                  EdgeInsets.only(right: 10.0.w),
+                                              padding: EdgeInsets.only(
+                                                  right: 10.0.w),
                                               child: defaultButton(
                                                 function: () {
                                                   if (cubit.isLargeGrip) {
@@ -748,8 +798,10 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                                       ? Colors.white
                                                       : darkBlueColor,
                                                   fontWeight: FontWeight.bold,
-                                                  fontSize: ScreenUtil().setSp(15,
-                                                      allowFontScalingSelf: true),
+                                                  fontSize: ScreenUtil().setSp(
+                                                      15,
+                                                      allowFontScalingSelf:
+                                                          true),
                                                 ),
                                               ),
                                             ),
@@ -779,9 +831,11 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 16.w),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       AutoSizeText(
                                         "Program Angle",
@@ -815,7 +869,10 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          RectangleNumber(num: '0'),
+                                          RectangleNumber(
+                                              num: cubit.programSmallAngle
+                                                  .round()
+                                                  .toString()),
                                           Container(
                                             width: 270.w,
                                             child: RangeSlider(
@@ -830,7 +887,10 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                                       values.start, values.end);
                                                 }),
                                           ),
-                                          RectangleNumber(num: '90'),
+                                          RectangleNumber(
+                                              num: cubit.programBigAngle
+                                                  .round()
+                                                  .toString()),
                                         ],
                                       ),
                                     ],
@@ -840,8 +900,8 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                   height: 18.h,
                                 ),
                                 Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 16),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 16),
                                   child: Divider(
                                     thickness: 2,
                                     color: greyColor,
@@ -851,26 +911,65 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
                                   height: 24.0.h,
                                 ),
                                 Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 10),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
                                   child: Column(
                                     children: [
                                       defaultButton(
-                                        function: () {
+                                        function: () async {
+                                          var programID =
+                                              cubit.idOptionItemSelected.id;
+                                          var angle = cubit.programBigAngle;
+                                          var duration = int.parse(
+                                              durationController.text
+                                                  .trim()
+                                                  .replaceAll('Min', ''));
 
-                                          navigateTo(context, StartProgram());
+                                          var repeatition = int.parse(
+                                              repetitionController.text
+                                                  .trim()
+                                                  .replaceAll('x', ''));
+                                          var vibrationValue =
+                                              cubit.isVibration ? 1 : 0;
 
+                                          if (programID == 0) {
+                                            showToast(
+                                                message:
+                                                    "You should choose Program first",
+                                                length: Toast.LENGTH_SHORT,
+                                                gravity: ToastGravity.BOTTOM,
+                                                timeInSecForIosWeb: 3);
+                                          } else {
+                                            await writeProgramSettings(
+                                                programID,
+                                                angle,
+                                                duration,
+                                                repeatition,
+                                                vibrationValue);
 
+                                            print(durationController.text
+                                                .trim()
+                                                .replaceAll('Min', '')
+                                                .replaceAll('X', ''));
 
+                                            var durationValue =
+                                                durationController.text
+                                                    .toString();
+                                            print(
+                                                "Duration Value : $durationValue\n");
+                                            var parts =
+                                                durationValue.split(" ");
 
-                                  /*        showToast(
-                                            message: "Okay",
-                                            length: Toast.LENGTH_SHORT,
-                                            gravity: ToastGravity.BOTTOM,
-                                            timeInSecForIosWeb: 3,
-                                            backgroundColor: darkBlueColor,
-                                            textColor: Colors.white,
-                                          );*/
+                                            var numValue = int.parse(
+                                                parts[0].trim().toString());
+                                            print(
+                                                "Duration Value Split : $numValue\n");
+
+                                            navigateTo(
+                                                context,
+                                                StartProgram(
+                                                    duration: numValue));
+                                          }
                                         },
                                         text: "Start",
                                         textStyle: TextStyle(
@@ -927,5 +1026,29 @@ class _ProgramSetupScreenState extends State<ProgramSetupScreen> {
         ),
       ),
     );
+  }
+
+  Future<String> getLocalPath() async {
+    var folder = await getApplicationDocumentsDirectory();
+    return folder.path;
+  }
+
+  String path;
+
+  Future<File> getLocalFile() async {
+    path = await getLocalPath();
+    print('path is $path');
+
+    return File('$path/programSettings.txt');
+  }
+
+  Future<void> writeProgramSettings(int programID, double angle, int duration,
+      int repeatition, int vibrationValue) async {
+    File file = await getLocalFile();
+
+    file.writeAsString(
+        '$programID \n $angle \n $duration \n $repeatition \n $vibrationValue \n 0 \n 0 \n 0 \n 0 ');
+    await Share.shareFiles(['$path/programSettings.txt'],
+        text: 'Program Settings');
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -5,10 +7,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nureab/screens/program_setup_screen.dart';
 import 'package:nureab/shared/constants.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 import 'bottomNavigation.dart';
 
 class StartProgram extends StatefulWidget {
+  final int duration;
+
+  const StartProgram({Key key, @required this.duration}) : super(key: key);
   @override
   _StartProgramState createState() => _StartProgramState();
 }
@@ -24,8 +31,9 @@ class _StartProgramState extends State<StartProgram>
 
   @override
   void initState() {
+    print('*********************  ${(widget.duration)}');
     _animationController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 1));
+        AnimationController(vsync: this, duration:  Duration(minutes: (widget.duration) ));
     _animationController.forward();
     super.initState();
   }
@@ -36,8 +44,11 @@ class _StartProgramState extends State<StartProgram>
     return Scaffold(
       body: SafeArea(
         child: WillPopScope(
+          // ignore: missing_return
           onWillPop: () {
-            navigateTo(context, ProgramSetupScreen());
+            if(Navigator.canPop(context)){
+              Navigator.pop(context);
+            }
           },
           child: Column(
             children: [
@@ -117,10 +128,10 @@ class _StartProgramState extends State<StartProgram>
               ),
               TweenAnimationBuilder(
                 tween: Tween(begin: 0.0, end: 1.0),
-                duration: Duration(seconds: 1),
+                duration: Duration(minutes: (widget.duration)),
                 builder: (context, value, child) {
                   int percentage = (value * 100).ceil();
-                  print(percentage);
+                  //print(percentage);
                   if (percentage == 100) {
                     btnText = 'Repeat';
                   }
@@ -176,7 +187,7 @@ class _StartProgramState extends State<StartProgram>
                                               color: Color(0x2FF003D8C)),
                                         ),
                                         TextSpan(
-                                          text: "\n     23:00",
+                                          text: "\n     ${widget.duration}:00",
                                           style: TextStyle(
                                               color: Color(0x2FF003D8C),
                                               fontSize: ScreenUtil().setSp(20,
@@ -203,7 +214,7 @@ class _StartProgramState extends State<StartProgram>
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: defaultButton(
                           function: () {
-                            navigateTo(context, StartProgram());
+                            navigateTo(context, StartProgram(duration: widget.duration,));
                           },
                           text: percentage == 100 ? 'Repeat' : 'Pause',
                           textStyle: TextStyle(
@@ -343,17 +354,15 @@ class _StartProgramState extends State<StartProgram>
                                                     Expanded(
                                                       flex: 1,
                                                       child: defaultButton(
-                                                        function: () {
-                                                          navigateTo(
+                                                        function: ()async {
+
+                                                          await writeProgramSettings();
+
+                                                          navigateAndFinish(
                                                               context,
                                                               BottomNavigation(
                                                                 comingIndex: 0,
                                                               ));
-                                                          /*  cubit.navigate(
-                                                    context,
-                                                    BottomNavigation(
-                                                      comingIndex: 0,
-                                                    ));*/
                                                         },
                                                         text: "Yes,Taken Off",
                                                         background:
@@ -381,9 +390,6 @@ class _StartProgramState extends State<StartProgram>
                                                         function: () {
                                                           Navigator.pop(
                                                               context);
-                                                          /*   navigateTo(context,  BottomNavigation(
-                                                  comingIndex: 0,
-                                                ));*/
                                                         },
                                                         text: "Keep Position",
                                                         background:
@@ -415,13 +421,13 @@ class _StartProgramState extends State<StartProgram>
                                   );
                                 },
                               );
+                            }else{
+                              if (Navigator.canPop(context)) {
+                                Navigator.pop(context);
+                              } else {
+                                SystemNavigator.pop();
+                              }
                             }
-
-                            /*  if (Navigator.canPop(context)) {
-                                  Navigator.pop(context);
-                                } else {
-                                  SystemNavigator.pop();
-                                }*/
                           },
                           text: percentage == 100 ? 'End Session' : 'Cancel',
                           textStyle: TextStyle(
@@ -489,43 +495,27 @@ class _StartProgramState extends State<StartProgram>
       ),
     );
   }
+  Future<String> getLocalPath() async {
+    var folder = await getApplicationDocumentsDirectory();
+    return folder.path;
+  }
+
+  String path;
+
+  Future<File> getLocalFile() async {
+    path = await getLocalPath();
+    print('path is $path');
+
+    return File('$path/programSettings.txt');
+  }
+
+  Future<void> writeProgramSettings() async {
+    File file = await getLocalFile();
+
+    file.writeAsString(
+        '10 \n 0 \n 0 \n 0 \n 0 \n 0 \n 0 \n 0 \n 0 ');
+    await Share.shareFiles(['$path/programSettings.txt'],
+        text: 'Program Settings');
+  }
 }
 
-/*
-*
-*
-*
-* Center(
-          child: Container(
-            width: size,
-            height: size,
-            child: Stack(
-              children: [
-                ShaderMask(
-                  shaderCallback: (rect) {
-                    return SweepGradient(
-                            startAngle: 0.0,
-                            endAngle: TWO_PI,
-                            stops: [0.5, 0.5],
-                            center: Alignment.center,
-                            colors: [Color(0x2FF003D8C), Colors.grey.withAlpha(55)])
-                        .createShader(rect);
-                  },
-                  child: Container(
-                    width: size,
-                    height: size,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.white),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    width: size - 30,
-                    height: size - 30,
-                    decoration: BoxDecoration(
-                        color: Colors.white, shape: BoxShape.circle),
-                  ),
-                )
-              ],
-            ),
-          ),*/

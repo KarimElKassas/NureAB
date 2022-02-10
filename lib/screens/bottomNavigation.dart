@@ -38,66 +38,71 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
           var cubit = BottomNavCubit.get(context);
 
-          return Scaffold(
-            appBar: AppBar(
-              systemOverlayStyle: SystemUiOverlayStyle(
-                statusBarColor: greyFiveColor,
-                statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
-                statusBarBrightness: Brightness.light, // For iOS (dark icons)
+          return WillPopScope(
+            onWillPop: (){
+              return SystemNavigator.pop(animated: true);
+            },
+            child: Scaffold(
+              appBar: AppBar(
+                systemOverlayStyle: SystemUiOverlayStyle(
+                  statusBarColor: greyFiveColor,
+                  statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
+                  statusBarBrightness: Brightness.light, // For iOS (dark icons)
+                ),
+                toolbarHeight: 0,
+                elevation: 0,
               ),
-              toolbarHeight: 0,
-              elevation: 0,
-            ),
-            body: SingleChildScrollView(
-              child: SafeArea(
-                child: Column(
-                  children: [
-                    Container(
-                      color: greyFiveColor,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(color: greyFiveColor,
-                                width: 150.w,
-                                child: SvgPicture.asset("assets/images/logo.svg")),
-                            InkWell(
-                              onTap: (){
-                                cubit.navigate(context, NotificationsScreen());
-                              },
-                              child: Icon(
-                                Icons.notifications,
-                                color: darkBlueColor,
-                                size: 35,
-                              ),
-                            )
-                          ],
+              body: SingleChildScrollView(
+                child: SafeArea(
+                  child: Column(
+                    children: [
+                      Container(
+                        color: greyFiveColor,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(color: greyFiveColor,
+                                  width: 150.w,
+                                  child: SvgPicture.asset("assets/images/logo.svg")),
+                              InkWell(
+                                onTap: (){
+                                  cubit.navigate(context, NotificationsScreen());
+                                },
+                                child: Icon(
+                                  Icons.notifications,
+                                  color: darkBlueColor,
+                                  size: 35,
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    cubit.screens[cubit.currentIndex],
-                  ],
+                      cubit.screens[cubit.currentIndex],
+                    ],
+                  ),
                 ),
               ),
-            ),
-            bottomNavigationBar: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                ),
-                child: BottomNavigationBar(
-                  iconSize: 30,
-                  onTap: (index) {
-                    cubit.changeBottomNavBarIndex(index, context);
-                  },
-                  unselectedItemColor: darkBlueColor,
-                  selectedItemColor: secondaryColor,
-                  backgroundColor: greyFiveColor,
-                  currentIndex: cubit.currentIndex,
-                  elevation: 20,
-                  items: cubit.bottomNavigationItems,
+              bottomNavigationBar: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(30),
+                  ),
+                  child: BottomNavigationBar(
+                    iconSize: 30,
+                    onTap: (index) {
+                      cubit.changeBottomNavBarIndex(index, context);
+                    },
+                    unselectedItemColor: darkBlueColor,
+                    selectedItemColor: secondaryColor,
+                    backgroundColor: greyFiveColor,
+                    currentIndex: cubit.currentIndex,
+                    elevation: 20,
+                    items: cubit.bottomNavigationItems,
+                  ),
                 ),
               ),
             ),

@@ -17,8 +17,8 @@ class ProgramSetupCubit extends Cubit<ProgramSetupStates>{
   bool isLargeGrip = true;
   bool isGripVisible = false;
 
-  double programSmallAngle = 20;
-  double programBigAngle = 60;
+  double programSmallAngle = 0;
+  double programBigAngle = 90;
 
   DropListModel idDropListModel = DropListModel([
     OptionItem(id: 1, title: "PIP Treatment Program"),
@@ -28,8 +28,9 @@ class ProgramSetupCubit extends Cubit<ProgramSetupStates>{
   ]);
   OptionItem idOptionItemSelected = OptionItem(id: 0, title: "Select Program");
 
-  void changeProgramIndex(OptionItem optionItem) {
+  void changeProgramIndex(OptionItem optionItem, angle) {
     idOptionItemSelected = optionItem;
+    initProgramAngle(angle);
     emit(ProgramSetupChangeProgramState());
   }
   void showGripVisibility() {
@@ -40,7 +41,10 @@ class ProgramSetupCubit extends Cubit<ProgramSetupStates>{
     isGripVisible = false;
     emit(ProgramSetupChangeGripVisibilityState());
   }
-
+  void initProgramAngle(angle){
+    programSmallAngle = angle;
+    emit(ProgramSetupInitProgramAngleState());
+  }
   void changeDuration(duration){
     programDuration = duration;
     emit(ProgramSetupChangeDurationState(programDuration));

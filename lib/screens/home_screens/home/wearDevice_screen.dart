@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_blue/flutter_blue.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nureab/cubit/wear_device/wear_device_cubit.dart';
@@ -9,6 +12,10 @@ import 'package:nureab/cubit/wear_device/wear_device_states.dart';
 import 'package:nureab/shared/constants.dart';
 import 'package:nureab/shared/widgets/rectangle_number.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
+
+import '../../program_setup_screen.dart';
 
 
 class WearDevice extends StatefulWidget {
@@ -81,7 +88,7 @@ class _WearDeviceState extends State<WearDevice> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsets.only(left: 16, top: 40, right: 16),
+                    const EdgeInsets.only(left: 16, top: 40, right: 16),
                     child: Align(
                         alignment: Alignment.topLeft,
                         child: AutoSizeText(
@@ -227,8 +234,9 @@ class _WearDeviceState extends State<WearDevice> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: defaultButton(
-                      function: () {
-                        showDialog(
+                      function: ()async {
+                        await writeWearingSettings(cubit.PIP, cubit.MCP, cubit.Thumb);
+                        await showDialog(
                           context: context,
                           builder: (dialogContext) {
                             return Dialog(
@@ -297,6 +305,7 @@ class _WearDeviceState extends State<WearDevice> {
                             );
                           },
                         );
+                        navigateTo(context, ProgramSetupScreen(pip: cubit.PIP, mcp: cubit.MCP, thump: cubit.Thumb));
                       },
                       text: "Done",
                       background: lightSecondaryColor,
@@ -319,7 +328,8 @@ class _WearDeviceState extends State<WearDevice> {
                           Navigator.pop(context);
                         } else {
                           SystemNavigator.pop();
-                        }                      },
+                        }
+                      },
                       text: "Later",
                       background: greySixColor,
                       borderColor: greyFiveColor,
@@ -338,5 +348,51 @@ class _WearDeviceState extends State<WearDevice> {
         },
       ),
     );
+  }
+
+  Future<String> getLocalPath() async {
+    var folder = await getApplicationDocumentsDirectory();
+    return folder.path;
+  }
+
+  String path;
+
+  Future<File> getLocalFile() async {
+    path = await getLocalPath();
+    print('path is $path');
+
+    return File('$path/programSettings.txt');
+  }
+
+  Future<void> writeWearingSettings(double pip, double mcp,
+      double thump) async {
+    /*File file = await getLocalFile();
+
+     file.writeAsString(
+        '5 \n $pip \n $mcp \n $thump \n 0 \n 0 \n 0 \n 0 \n 0 ');
+    Share.shareFiles(['$path/programSettings.txt'], text: 'Program Settings');
+*/
+    List<int> data = [
+      5,
+      pip.round(),
+      mcp.round(),
+      thump.round(),
+      0,
+      0,
+      0,
+      0,
+      0
+    ];
+    var connectedDevices = await FlutterBlue.instance.connectedDevices;
+    List<BluetoothService> services = await connectedDevices[0].discoverServices();
+    services.forEach((service)async {
+      // do something with service
+      var characteristics = service.characteristics;
+      for(BluetoothCharacteristic c in characteristics) {
+        List<int> value = await c.read();
+        print(value);
+        await c.write(data);
+      }
+    });
   }
 }

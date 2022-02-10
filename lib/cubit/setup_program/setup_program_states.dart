@@ -2,6 +2,8 @@ abstract class ProgramSetupStates{}
 
 class ProgramSetupInitialState extends ProgramSetupStates{}
 
+class ProgramSetupInitProgramAngleState extends ProgramSetupStates{}
+
 class ProgramSetupChangeProgramState extends ProgramSetupStates{}
 
 class ProgramSetupChangeGripVisibilityState extends ProgramSetupStates{}

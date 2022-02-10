@@ -11,7 +11,7 @@ class BluetoothCubit extends Cubit<BluetoothStates>{
 
   void navigate(BuildContext context, route){
 
-    navigateTo(context, route);
+    navigateAndFinish(context, route);
 
     emit(BluetoothSuccessEndState());
   }
